@@ -64,6 +64,10 @@ html {
 	cursor: pointer;
 }
 
+.navigation {
+		border-bottom: 1px solid black;
+}
+
 .navigation i:nth-child(n+2) {
 	padding-left: 30px;
 }
