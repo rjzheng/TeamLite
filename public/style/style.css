@@ -51,3 +51,7 @@ body {
 .icon {
   opacity: 0.7;
 }
+
+.icon-dark {
+  opacity: 0.9;
+}

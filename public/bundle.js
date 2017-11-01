@@ -28891,7 +28891,7 @@
 	          )
 	        ),
 	        _react2.default.createElement("img", { src: "images/homeIcon.png", className: "icon", height: "30", width: "30" }),
-	        _react2.default.createElement("img", { src: "images/searchIcon.png", className: "icon", height: "30", width: "30" }),
+	        _react2.default.createElement("img", { src: "images/searchIcon.png", className: "icon-dark", height: "30", width: "30" }),
 	        _react2.default.createElement(
 	          "div",
 	          { className: "container-fluid" },

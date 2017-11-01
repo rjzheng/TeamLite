@@ -15,7 +15,7 @@ class Home extends Component {
 
       	{/* Other nav icons */}
       	<img src="images/homeIcon.png" className="icon" height="30" width="30"></img>
-      	<img src="images/searchIcon.png" className="icon" height="30" width="30"></img>
+      	<img src="images/searchIcon.png" className="icon-dark" height="30" width="30"></img>
 
 
       	<div className="container-fluid">
