@@ -4,9 +4,11 @@ import { Route, IndexRoute } from 'react-router';
 
 /* Components */
 import App from 'App';
-import Home from 'Home';
+import HomePage from 'HomePage';
 
 export default (
   <Route path="/" component={App}>
-  </Route>
+		<IndexRoute component={HomePage} />
+		{/* <Route path="/home" component={HomePage} /> */}
+	</Route>
 );

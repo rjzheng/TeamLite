@@ -34,6 +34,7 @@ app.listen(PORT, function () {
   console.log('Express server is up on port ' + PORT);
 });
 
+
 // REST GET requests
 app.get('',function(req,res){
   // res.send();
@@ -46,3 +47,8 @@ app.post("", function(req, res) {
 
   // res.send();
 });
+
+// Allow browserHistory in the front end
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname+'/public', 'index.html'));
+})
