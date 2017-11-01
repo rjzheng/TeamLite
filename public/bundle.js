@@ -14747,7 +14747,7 @@
 	 *
 	 * @providesModule shallowEqual
 	 * @typechecks
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -20642,7 +20642,7 @@
 	 * This source code is licensed under the MIT license found in the
 	 * LICENSE file in the root directory of this source tree.
 	 *
-	 * 
+	 *
 	 */
 
 	function makeEmptyFunction(arg) {
@@ -22701,7 +22701,7 @@
 	 * This source code is licensed under the MIT license found in the
 	 * LICENSE file in the root directory of this source tree.
 	 *
-	 * 
+	 *
 	 */
 
 	function makeEmptyFunction(arg) {
@@ -28892,6 +28892,7 @@
 	        ),
 	        _react2.default.createElement("img", { src: "images/homeIcon.png", className: "icon", height: "30", width: "30" }),
 	        _react2.default.createElement("img", { src: "images/searchIcon.png", className: "icon-dark", height: "30", width: "30" }),
+					_react2.default.createElement("img", { src: "images/cameraIcon.png", className: "icon-dark", height: "30", width: "30" }),
 	        _react2.default.createElement(
 	          "div",
 	          { className: "container-fluid" },
