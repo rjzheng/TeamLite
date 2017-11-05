@@ -6,3 +6,4 @@
 3. npm install
 4. npm start
 5. visit http://localhost:8080 in your browser
+6. Get paid a million bucks

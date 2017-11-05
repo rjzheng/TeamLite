@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Home from 'Home';
+import HomePage from 'HomePage';
 
 class Main extends Component {
 
@@ -12,9 +12,6 @@ class Main extends Component {
   render () {
     return (
       <div>
-        <div>
-          <Home />
-        </div>
         {this.props.children}
       </div>
     );
