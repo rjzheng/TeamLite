@@ -62,7 +62,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _configureStore = __webpack_require__(265);
+	var _configureStore = __webpack_require__(266);
 
 	var conf = _interopRequireWildcard(_configureStore);
 
@@ -29043,7 +29043,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Article = __webpack_require__(281);
+	var _Article = __webpack_require__(265);
 
 	var _Article2 = _interopRequireDefault(_Article);
 
@@ -29089,6 +29089,76 @@
 /* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Article = function (_Component) {
+	  _inherits(Article, _Component);
+
+	  function Article() {
+	    _classCallCheck(this, Article);
+
+	    return _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).apply(this, arguments));
+	  }
+
+	  _createClass(Article, [{
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+
+	      console.log(this.props);
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "article", onClick: function onClick() {
+	            window.location = _this2.props.url;
+	          } },
+	        _react2.default.createElement("img", { src: this.props.thumbnail }),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "article-description" },
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            this.props.title
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            this.props.description
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Article;
+	}(_react.Component);
+
+	;
+
+	exports.default = Article;
+
+/***/ }),
+/* 266 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -29100,17 +29170,17 @@
 
 	var redux = _interopRequireWildcard(_redux);
 
-	var _reduxPromise = __webpack_require__(266);
+	var _reduxPromise = __webpack_require__(267);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
-	var _reducers = __webpack_require__(273);
+	var _reducers = __webpack_require__(274);
 
-	var _reduxThunk = __webpack_require__(274);
+	var _reduxThunk = __webpack_require__(275);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(275);
+	var _reduxLogger = __webpack_require__(276);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
@@ -29135,7 +29205,7 @@
 	;
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29146,7 +29216,7 @@
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(267);
+	var _fluxStandardAction = __webpack_require__(268);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -29173,7 +29243,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29184,7 +29254,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(268);
+	var _lodashIsplainobject = __webpack_require__(269);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -29203,7 +29273,7 @@
 	}
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29214,9 +29284,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(269),
-	    isArguments = __webpack_require__(270),
-	    keysIn = __webpack_require__(271);
+	var baseFor = __webpack_require__(270),
+	    isArguments = __webpack_require__(271),
+	    keysIn = __webpack_require__(272);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -29312,7 +29382,7 @@
 
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports) {
 
 	/**
@@ -29366,7 +29436,7 @@
 
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports) {
 
 	/**
@@ -29601,7 +29671,7 @@
 
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29612,8 +29682,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(270),
-	    isArray = __webpack_require__(272);
+	var isArguments = __webpack_require__(271),
+	    isArray = __webpack_require__(273);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -29739,7 +29809,7 @@
 
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports) {
 
 	/**
@@ -29925,7 +29995,7 @@
 
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -29950,7 +30020,7 @@
 	};
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29978,7 +30048,7 @@
 	exports['default'] = thunk;
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29990,11 +30060,11 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _core = __webpack_require__(276);
+	var _core = __webpack_require__(277);
 
-	var _helpers = __webpack_require__(277);
+	var _helpers = __webpack_require__(278);
 
-	var _defaults = __webpack_require__(280);
+	var _defaults = __webpack_require__(281);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -30116,7 +30186,7 @@
 
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30129,9 +30199,9 @@
 
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(277);
+	var _helpers = __webpack_require__(278);
 
-	var _diff = __webpack_require__(278);
+	var _diff = __webpack_require__(279);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -30262,7 +30332,7 @@
 	}
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -30286,7 +30356,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30296,7 +30366,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(279);
+	var _deepDiff = __webpack_require__(280);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -30385,7 +30455,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -30814,7 +30884,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -30863,76 +30933,6 @@
 	  transformer: undefined
 	};
 	module.exports = exports["default"];
-
-/***/ }),
-/* 281 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Article = function (_Component) {
-	  _inherits(Article, _Component);
-
-	  function Article() {
-	    _classCallCheck(this, Article);
-
-	    return _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).apply(this, arguments));
-	  }
-
-	  _createClass(Article, [{
-	    key: "render",
-	    value: function render() {
-	      var _this2 = this;
-
-	      console.log(this.props);
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "article", onClick: function onClick() {
-	            window.location = _this2.props.url;
-	          } },
-	        _react2.default.createElement("img", { src: this.props.thumbnail }),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "article-description" },
-	          _react2.default.createElement(
-	            "h2",
-	            null,
-	            this.props.title
-	          ),
-	          _react2.default.createElement(
-	            "p",
-	            null,
-	            this.props.description
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Article;
-	}(_react.Component);
-
-	;
-
-	exports.default = Article;
 
 /***/ })
 /******/ ]);
