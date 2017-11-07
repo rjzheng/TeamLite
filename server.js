@@ -1,5 +1,6 @@
 // Import libraries
 var express = require('express');
+var path = require('path');
 
 // Create express app
 var app = express();

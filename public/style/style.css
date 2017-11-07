@@ -51,6 +51,7 @@ html {
 	border-radius: 0px 15px 15px 15px;
 	padding: 20px;
 	margin: 20px;
+  float: left;
 }
 
 .articleTitle {
@@ -74,4 +75,32 @@ html {
 
 .navigation a {
 	padding-left: 30px;
+}
+
+.article {
+  height: 110px;
+  border-bottom: 1px solid #000000;
+  padding-top: 10px;
+}
+
+.article img {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
+.article-description {
+  float: right;
+  text-align: left;
+  width: 500px;
+  margin-left: 10px;
+}
+
+.article-description h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.article-description p {
+  font-size: 14px;
 }

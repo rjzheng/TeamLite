@@ -11,7 +11,8 @@ module.exports = {
       './app/components',
       './app/store',
       './app/reducers',
-      './app/components/Home'
+      './app/components/Home',
+      './app/components/Article'
     ],
     alias: {
     },
