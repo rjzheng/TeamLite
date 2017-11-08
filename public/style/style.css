@@ -16,12 +16,6 @@ html {
 	margin: auto;
 }
 
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .dropdown{
 	position: relative;
@@ -52,6 +46,10 @@ html {
 }
 
 .articleBox {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, 0);
 	background-color: #dae9eb;
 	border: 15px;
 	border-color: white;
@@ -82,6 +80,14 @@ html {
 	padding-left: 30px;
 }
 
+.navigation i {
+  transition: opacity 0.25s;
+}
+
+.navigation i:hover {
+  opacity: 0.4;
+}
+
 .navigation a {
 	padding-left: 30px;
 }
@@ -90,6 +96,12 @@ html {
   height: 110px;
   border-bottom: 1px solid #000000;
   padding-top: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.article:hover {
+  opacity: 0.6;
 }
 
 .article img {

@@ -7,13 +7,6 @@ class HomePagePanel extends Component {
       <div className="container-fluid">
         <h1>Good morning, John</h1>
 
-        {/* <div className="container-fluid">
-          <h4>Recommended for you:</h4>
-          <button>Lowering Blood Pressure</button>
-          <br></br>
-          <button>Raising Calcium Levels</button>
-        </div> */}
-
         <ArticlePanel />
       </div>
     )
