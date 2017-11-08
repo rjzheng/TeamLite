@@ -16,6 +16,13 @@ html {
 	margin: auto;
 }
 
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .dropdown{
 	position: relative;
 	display: inline-block;
@@ -52,7 +59,6 @@ html {
 	padding: 20px;
 	margin: 20px;
   float: left;
-  overflow: auto;
   height: 300px;
   overflow-y: scroll;
 }
@@ -106,4 +112,19 @@ html {
 
 .article-description p {
   font-size: 14px;
+}
+
+#titleDiv {
+	padding: 30px;
+	text-align: center;
+}
+
+#titleMed {
+	color: #355f64;
+	display: inline-block;
+}
+
+#titleLite {
+	color: white;
+	display: inline-block;
 }

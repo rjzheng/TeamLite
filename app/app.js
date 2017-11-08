@@ -10,17 +10,17 @@ import routes from './routes';
 import * as conf from 'configureStore';
 
 // Init custom store configuration
-var store = conf.configure();
+// var store = conf.configure();
 
 // Subscribe to state changes
-store.subscribe(() => {
-  console.log('Store changed', store.getState());
-});
+// store.subscribe(() => {
+//   console.log('Store changed', store.getState());
+// });
 
 // Render provider and routes to DOM
 ReactDOM.render(
-  <Provider store={store}>
+  // <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
-  </Provider>,
-  document.getElementById('app')
+  // </Provider>
+  ,document.getElementById('app')
 );

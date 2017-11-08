@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class Article extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="article" onClick={() => {
         window.location=this.props.url;

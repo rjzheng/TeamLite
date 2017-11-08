@@ -53,6 +53,22 @@ body {
 	font-size: 20px;
 }
 
+.titleDiv {
+	font-size: 100px;
+	padding: 30px;
+	text-align: center;
+}
+
+.titleMed {
+	color: #355f64;
+	display: inline-block;
+}
+
+.titleLite {
+	color: white;
+	display: inline-block;
+}
+
 #titleDiv {
 	font-size: 100px;
 	padding: 30px;
@@ -68,4 +84,3 @@ body {
 	color: white;
 	display: inline-block;
 }
-
