@@ -28954,11 +28954,21 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement("i", { className: "ion-ios-home icon" }),
-	        _react2.default.createElement("i", { className: "ion-search icon" }),
 	        _react2.default.createElement(
-	          "a",
-	          { href: "camera.html" },
+	          "span",
+	          null,
+	          _react2.default.createElement("i", { className: "ion-ios-home icon" })
+	        ),
+	        _react2.default.createElement(
+	          "span",
+	          null,
+	          _react2.default.createElement("i", { className: "ion-search icon" })
+	        ),
+	        _react2.default.createElement(
+	          "span",
+	          { onClick: function onClick() {
+	              window.location.href = '/camera.html';
+	            } },
 	          _react2.default.createElement("i", { className: "ion-camera icon" })
 	        )
 	      );

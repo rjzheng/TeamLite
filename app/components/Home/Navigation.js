@@ -12,9 +12,11 @@ class Navigation extends Component {
           </div>
         </div>
 
-        <i className="ion-ios-home icon"></i>
-        <i className="ion-search icon"></i>
-        <a href="camera.html"><i className="ion-camera icon"></i></a>
+        <span><i className="ion-ios-home icon"></i></span>
+        <span><i className="ion-search icon"></i></span>
+        <span onClick={() => {
+          window.location.href = '/camera.html';
+        }}><i className="ion-camera icon"></i></span>
       </div>
     )
   };
