@@ -29135,10 +29135,18 @@
 	var Article = function (_Component) {
 	  _inherits(Article, _Component);
 
-	  function Article() {
+	  function Article(props) {
 	    _classCallCheck(this, Article);
 
-	    return _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
+
+	    var value = true;
+
+	    _this.state = {
+	      value: value,
+	      imgSrc: value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Article, [{
@@ -29148,23 +29156,34 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'article', onClick: function onClick() {
+	        { className: 'article' },
+	        _react2.default.createElement('img', { className: 'thumbnail', src: this.props.thumbnail, onClick: function onClick() {
 	            var win = window.open(_this2.props.url, '_blank');
 	            win.focus();
-	          } },
-	        _react2.default.createElement('img', { className: 'thumbnail', src: this.props.thumbnail }),
+	          } }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'article-description' },
-	          _react2.default.createElement('img', { className: 'bookmarkAdd', src: '/images/bookmark-add.png' }),
+	          _react2.default.createElement('img', { className: 'bookmarkAdd', src: this.state.imgSrc, onClick: function onClick() {
+	              _this2.setState({
+	                value: !_this2.state.value,
+	                imgSrc: !_this2.state.value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	              });
+	            } }),
 	          _react2.default.createElement(
 	            'h2',
-	            null,
+	            { onClick: function onClick() {
+	                var win = window.open(_this2.props.url, '_blank');
+	                win.focus();
+	              } },
 	            this.props.title
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            null,
+	            { onClick: function onClick() {
+	                var win = window.open(_this2.props.url, '_blank');
+	                win.focus();
+	              } },
 	            this.props.description
 	          )
 	        )
@@ -29349,9 +29368,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Article = __webpack_require__(265);
+	var _BookmarkArticle = __webpack_require__(287);
 
-	var _Article2 = _interopRequireDefault(_Article);
+	var _BookmarkArticle2 = _interopRequireDefault(_BookmarkArticle);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29376,8 +29395,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'articleBox' },
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium1.jpg', title: '18 Surprising Dairy-Free Sources of Calcium', description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.', url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure.jpg', title: 'Exercise: A drug-free approach to lowering high blood pressure', description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.', url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206' })
+	        _react2.default.createElement(_BookmarkArticle2.default, { thumbnail: '/images/Source-Of-Calcium1.jpg', title: '18 Surprising Dairy-Free Sources of Calcium', description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.', url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium' }),
+	        _react2.default.createElement(_BookmarkArticle2.default, { thumbnail: '/images/lower-blood-pressure.jpg', title: 'Exercise: A drug-free approach to lowering high blood pressure', description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.', url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206' })
 	      );
 	    }
 	  }]);
@@ -31292,6 +31311,96 @@
 	  transformer: undefined
 	};
 	module.exports = exports["default"];
+
+/***/ }),
+/* 287 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BookmarkArticle = function (_Component) {
+	  _inherits(BookmarkArticle, _Component);
+
+	  function BookmarkArticle(props) {
+	    _classCallCheck(this, BookmarkArticle);
+
+	    var _this = _possibleConstructorReturn(this, (BookmarkArticle.__proto__ || Object.getPrototypeOf(BookmarkArticle)).call(this, props));
+
+	    var value = false;
+
+	    _this.state = {
+	      value: value,
+	      imgSrc: value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	    };
+	    return _this;
+	  }
+
+	  _createClass(BookmarkArticle, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'article' },
+	        _react2.default.createElement('img', { className: 'thumbnail', src: this.props.thumbnail, onClick: function onClick() {
+	            var win = window.open(_this2.props.url, '_blank');
+	            win.focus();
+	          } }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'article-description' },
+	          _react2.default.createElement('img', { className: 'bookmarkAdd', src: this.state.imgSrc, onClick: function onClick() {
+	              _this2.setState({
+	                value: !_this2.state.value,
+	                imgSrc: !_this2.state.value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	              });
+	            } }),
+	          _react2.default.createElement(
+	            'h2',
+	            { onClick: function onClick() {
+	                var win = window.open(_this2.props.url, '_blank');
+	                win.focus();
+	              } },
+	            this.props.title
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { onClick: function onClick() {
+	                var win = window.open(_this2.props.url, '_blank');
+	                win.focus();
+	              } },
+	            this.props.description
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return BookmarkArticle;
+	}(_react.Component);
+
+	;
+
+	exports.default = BookmarkArticle;
 
 /***/ })
 /******/ ]);
