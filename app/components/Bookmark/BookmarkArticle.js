@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class Article extends Component {
+class BookmarkArticle extends Component {
 
   constructor(props) {
     super(props);
 
-    let value = true;
+    let value = false;
 
     this.state = {
       value: value,
@@ -47,4 +47,4 @@ class Article extends Component {
   };
 };
 
-export default Article;
+export default BookmarkArticle;
