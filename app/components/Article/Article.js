@@ -4,7 +4,8 @@ class Article extends Component {
   render() {
     return (
       <div className="article" onClick={() => {
-        window.location=this.props.url;
+        var win = window.open(this.props.url, '_blank');
+        win.focus();
       }}>
         <img src={this.props.thumbnail}></img>
         <div className="article-description">

@@ -62,7 +62,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _configureStore = __webpack_require__(267);
+	var _configureStore = __webpack_require__(268);
 
 	var conf = _interopRequireWildcard(_configureStore);
 
@@ -28768,17 +28768,21 @@
 
 	var _Login2 = _interopRequireDefault(_Login);
 
+	var _Bookmark = __webpack_require__(267);
+
+	var _Bookmark2 = _interopRequireDefault(_Bookmark);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/* Components */
+	/* Node Modules */
 	exports.default = _react2.default.createElement(
 			_reactRouter.Route,
 			{ path: '/', component: _App2.default },
 			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Login2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/home', component: _HomePage2.default })
+			_react2.default.createElement(_reactRouter.Route, { path: '/home', component: _HomePage2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/bookmark', component: _Bookmark2.default })
 	);
-
-	/* Components */
-	/* Node Modules */
 
 /***/ }),
 /* 260 */
@@ -28900,7 +28904,7 @@
 /* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28930,46 +28934,36 @@
 	  }
 
 	  _createClass(Navigation, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "navigation" },
+	        'div',
+	        { className: 'navigation' },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "dropdown" },
-	          _react2.default.createElement("i", { className: "ion-navicon-round icon" }),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "dropdown-content" },
-	            _react2.default.createElement(
-	              "a",
-	              { href: "#" },
-	              "Profile"
-	            ),
-	            _react2.default.createElement(
-	              "a",
-	              { href: "#" },
-	              "Bookmarks"
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "span",
-	          null,
-	          _react2.default.createElement("i", { className: "ion-ios-home icon" })
-	        ),
-	        _react2.default.createElement(
-	          "span",
-	          null,
-	          _react2.default.createElement("i", { className: "ion-search icon" })
-	        ),
-	        _react2.default.createElement(
-	          "span",
+	          'span',
 	          { onClick: function onClick() {
-	              window.location.href = '/camera.html';
+	              _this2.context.router.push('/home');
 	            } },
-	          _react2.default.createElement("i", { className: "ion-camera icon" })
+	          _react2.default.createElement('i', { className: 'ion-ios-home icon' })
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          _react2.default.createElement('i', { className: 'ion-android-person icon' })
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { onClick: function onClick() {
+	              _this2.context.router.push('/bookmark');
+	            } },
+	          _react2.default.createElement('i', { className: 'ion-android-bookmark icon' })
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          _react2.default.createElement('i', { className: 'ion-search icon' })
 	        )
 	      );
 	    }
@@ -28978,6 +28972,9 @@
 	  return Navigation;
 	}(_react.Component);
 
+	Navigation.contextTypes = {
+	  router: _react.PropTypes.object
+	};
 	;
 
 	exports.default = Navigation;
@@ -29104,7 +29101,7 @@
 /* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29134,26 +29131,27 @@
 	  }
 
 	  _createClass(Article, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "article", onClick: function onClick() {
-	            window.location = _this2.props.url;
+	        'div',
+	        { className: 'article', onClick: function onClick() {
+	            var win = window.open(_this2.props.url, '_blank');
+	            win.focus();
 	          } },
-	        _react2.default.createElement("img", { src: this.props.thumbnail }),
+	        _react2.default.createElement('img', { src: this.props.thumbnail }),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "article-description" },
+	          'div',
+	          { className: 'article-description' },
 	          _react2.default.createElement(
-	            "h2",
+	            'h2',
 	            null,
 	            this.props.title
 	          ),
 	          _react2.default.createElement(
-	            "p",
+	            'p',
 	            null,
 	            this.props.description
 	          )
@@ -29272,23 +29270,83 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Navigation = __webpack_require__(262);
+
+	var _Navigation2 = _interopRequireDefault(_Navigation);
+
+	var _BookmarkPanel = __webpack_require__(284);
+
+	var _BookmarkPanel2 = _interopRequireDefault(_BookmarkPanel);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Bookmark = function (_Component) {
+	  _inherits(Bookmark, _Component);
+
+	  function Bookmark() {
+	    _classCallCheck(this, Bookmark);
+
+	    return _possibleConstructorReturn(this, (Bookmark.__proto__ || Object.getPrototypeOf(Bookmark)).apply(this, arguments));
+	  }
+
+	  _createClass(Bookmark, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'home-page' },
+	        _react2.default.createElement(_Navigation2.default, null),
+	        _react2.default.createElement(_BookmarkPanel2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return Bookmark;
+	}(_react.Component);
+
+	;
+
+	exports.default = Bookmark;
+
+/***/ }),
+/* 268 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.configure = configure;
 
 	var _redux = __webpack_require__(238);
 
 	var redux = _interopRequireWildcard(_redux);
 
-	var _reduxPromise = __webpack_require__(268);
+	var _reduxPromise = __webpack_require__(269);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
-	var _reducers = __webpack_require__(275);
+	var _reducers = __webpack_require__(276);
 
-	var _reduxThunk = __webpack_require__(276);
+	var _reduxThunk = __webpack_require__(277);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(277);
+	var _reduxLogger = __webpack_require__(278);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
@@ -29313,7 +29371,7 @@
 	;
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29324,7 +29382,7 @@
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(269);
+	var _fluxStandardAction = __webpack_require__(270);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -29351,7 +29409,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29362,7 +29420,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(270);
+	var _lodashIsplainobject = __webpack_require__(271);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -29381,7 +29439,7 @@
 	}
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29392,9 +29450,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(271),
-	    isArguments = __webpack_require__(272),
-	    keysIn = __webpack_require__(273);
+	var baseFor = __webpack_require__(272),
+	    isArguments = __webpack_require__(273),
+	    keysIn = __webpack_require__(274);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -29490,7 +29548,7 @@
 
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports) {
 
 	/**
@@ -29544,7 +29602,7 @@
 
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports) {
 
 	/**
@@ -29779,7 +29837,7 @@
 
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29790,8 +29848,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(272),
-	    isArray = __webpack_require__(274);
+	var isArguments = __webpack_require__(273),
+	    isArray = __webpack_require__(275);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -29917,7 +29975,7 @@
 
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports) {
 
 	/**
@@ -30103,7 +30161,7 @@
 
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -30128,7 +30186,7 @@
 	};
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -30156,7 +30214,7 @@
 	exports['default'] = thunk;
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30168,11 +30226,11 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _core = __webpack_require__(278);
+	var _core = __webpack_require__(279);
 
-	var _helpers = __webpack_require__(279);
+	var _helpers = __webpack_require__(280);
 
-	var _defaults = __webpack_require__(282);
+	var _defaults = __webpack_require__(283);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -30294,7 +30352,7 @@
 
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30307,9 +30365,9 @@
 
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(279);
+	var _helpers = __webpack_require__(280);
 
-	var _diff = __webpack_require__(280);
+	var _diff = __webpack_require__(281);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -30440,7 +30498,7 @@
 	}
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -30464,7 +30522,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30474,7 +30532,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(281);
+	var _deepDiff = __webpack_require__(282);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -30563,7 +30621,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -30992,7 +31050,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -31041,6 +31099,62 @@
 	  transformer: undefined
 	};
 	module.exports = exports["default"];
+
+/***/ }),
+/* 284 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Article = __webpack_require__(265);
+
+	var _Article2 = _interopRequireDefault(_Article);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BookmarkPanel = function (_Component) {
+	  _inherits(BookmarkPanel, _Component);
+
+	  function BookmarkPanel() {
+	    _classCallCheck(this, BookmarkPanel);
+
+	    return _possibleConstructorReturn(this, (BookmarkPanel.__proto__ || Object.getPrototypeOf(BookmarkPanel)).apply(this, arguments));
+	  }
+
+	  _createClass(BookmarkPanel, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'articleBox' },
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium1.jpg', title: '18 Surprising Dairy-Free Sources of Calcium', description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.', url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium' }),
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure.jpg', title: 'Exercise: A drug-free approach to lowering high blood pressure', description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.', url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206' })
+	      );
+	    }
+	  }]);
+
+	  return BookmarkPanel;
+	}(_react.Component);
+
+	;
+
+	exports.default = BookmarkPanel;
 
 /***/ })
 /******/ ]);

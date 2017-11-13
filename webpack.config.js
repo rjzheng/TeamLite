@@ -12,7 +12,8 @@ module.exports = {
       './app/store',
       './app/reducers',
       './app/components/Home',
-      './app/components/Article'
+      './app/components/Article',
+      './app/components/Bookmark'
     ],
     alias: {
     },
