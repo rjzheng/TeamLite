@@ -1,10 +1,10 @@
 .booth{
-  width:400px;
+  width:640px;
   background-color: #ccc;
   border:10px solid #ddd;
   margin:0 auto;
   position:absolute;
-  left:35%;
+  left:25%;
 }
 
 html{
