@@ -14746,7 +14746,7 @@
 	 *
 	 * @providesModule shallowEqual
 	 * @typechecks
-	 * 
+	 *
 	 */
 
 	'use strict';
@@ -20641,7 +20641,7 @@
 	 * This source code is licensed under the MIT license found in the
 	 * LICENSE file in the root directory of this source tree.
 	 *
-	 * 
+	 *
 	 */
 
 	function makeEmptyFunction(arg) {
@@ -22700,7 +22700,7 @@
 	 * This source code is licensed under the MIT license found in the
 	 * LICENSE file in the root directory of this source tree.
 	 *
-	 * 
+	 *
 	 */
 
 	function makeEmptyFunction(arg) {
@@ -28970,7 +28970,20 @@
 	        ),
 	        _react2.default.createElement(
 	          'span',
-	          null,
+						/* start of change */
+						/* TODO william */
+						{ onClick: function onClick() {
+								var txt;
+	              //_this2.context.router.push('/bookmark');
+								var searchText = prompt("Which articles would you like to see?","Search here");
+								if(searchText == null || searchText == ""){
+									txt = "User cancelled the prompt.";
+								}else{
+									txt = "Searching for " + searchText;
+								}
+								_this2.context.router.push('/home');
+	            } },
+							/* end of change */
 	          _react2.default.createElement('i', { className: 'ion-search icon' })
 	        )
 	      );
