@@ -29143,10 +29143,11 @@
 	        { className: "article", onClick: function onClick() {
 	            window.location = _this2.props.url;
 	          } },
-	        _react2.default.createElement("img", { src: this.props.thumbnail }),
+	        _react2.default.createElement("img", { className: "thumbnail", src: this.props.thumbnail }),
 	        _react2.default.createElement(
 	          "div",
 	          { className: "article-description" },
+	          _react2.default.createElement("img", { className: "bookmarkAdd", src: "/images/bookmark-add.png" }),
 	          _react2.default.createElement(
 	            "h2",
 	            null,
