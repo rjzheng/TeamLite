@@ -3,6 +3,8 @@
   background-color: #ccc;
   border:10px solid #ddd;
   margin:0 auto;
+  position:absolute;
+  left:35%;
 }
 
 html{
