@@ -28970,12 +28970,9 @@
 	        ),
 	        _react2.default.createElement(
 	          'span',
-						/* start of change */
-						/* TODO william */
 						{ onClick: function onClick() {
 								var txt;
-	              //_this2.context.router.push('/bookmark');
-								var searchText = prompt("Which articles would you like to see?","Search here");
+								var searchText = prompt("Which articles would you like to see?","Healthy Life");
 								if(searchText == null || searchText == ""){
 									txt = "User cancelled the prompt.";
 								}else{
@@ -28983,7 +28980,6 @@
 								}
 								_this2.context.router.push('/home');
 	            } },
-							/* end of change */
 	          _react2.default.createElement('i', { className: 'ion-search icon' })
 	        )
 	      );
