@@ -3,5 +3,15 @@
   background-color: #ccc;
   border:10px solid #ddd;
   margin:0 auto;
-  
+}
+
+html{
+  background-color: #b7d5d9;
+  color: #4d4d4d;
+  font-family: Trebuchet MS, sans-serif;
+  text-rendering: optimizeLegibility;
+  border: 5px;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
 }
