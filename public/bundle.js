@@ -62,7 +62,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _configureStore = __webpack_require__(268);
+	var _configureStore = __webpack_require__(271);
 
 	var conf = _interopRequireWildcard(_configureStore);
 
@@ -28747,7 +28747,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-			value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(1);
@@ -28772,17 +28772,23 @@
 
 	var _Bookmark2 = _interopRequireDefault(_Bookmark);
 
+	var _Profile = __webpack_require__(269);
+
+	var _Profile2 = _interopRequireDefault(_Profile);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createElement(
+	  _reactRouter.Route,
+	  { path: '/', component: _App2.default },
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Login2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/home', component: _HomePage2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/bookmark', component: _Bookmark2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default })
+	);
 
 	/* Components */
 	/* Node Modules */
-	exports.default = _react2.default.createElement(
-			_reactRouter.Route,
-			{ path: '/', component: _App2.default },
-			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Login2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/home', component: _HomePage2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/bookmark', component: _Bookmark2.default })
-	);
 
 /***/ }),
 /* 260 */
@@ -28950,7 +28956,9 @@
 	        ),
 	        _react2.default.createElement(
 	          'span',
-	          null,
+	          { onClick: function onClick() {
+	              _this2.context.router.push('/profile');
+	            } },
 	          _react2.default.createElement('i', { className: 'ion-android-person icon' })
 	        ),
 	        _react2.default.createElement(
@@ -29085,7 +29093,10 @@
 	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium1.jpg', title: '18 Surprising Dairy-Free Sources of Calcium', description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.', url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium' }),
 	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure.jpg', title: 'Exercise: A drug-free approach to lowering high blood pressure', description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.', url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206' }),
 	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-sugar-level.jpg', title: '15 Easy Ways to Lower Blood Sugar Levels Naturally', description: 'One study from 2012 reported that 12–14% of US adults had type 2 diabetes, while 37–38% were classified as pre-diabetic. This means that 50% of all US adults have diabetes or pre-diabetes. Here are 15 easy ways to lower blood sugar levels naturally', url: 'https://www.healthline.com/nutrition/15-ways-to-lower-blood-sugar' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/raise-iron-level.jpg', title: 'How to Raise Your Iron Level Without Supplements', description: 'You can choose iron supplements to improve your levels, but following a healthy diet including iron-rich foods, and pairing foods for optimal absorption can help you increase your iron levels naturally.', url: 'http://healthyeating.sfgate.com/raise-iron-level-supplements-4850.html' })
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/raise-iron-level.jpg', title: 'How to Raise Your Iron Level Without Supplements', description: 'You can choose iron supplements to improve your levels, but following a healthy diet including iron-rich foods, and pairing foods for optimal absorption can help you increase your iron levels naturally.', url: 'http://healthyeating.sfgate.com/raise-iron-level-supplements-4850.html' }),
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium2.png', title: 'How to Increase Your Calcium Level', description: 'Calcium is a very important mineral that we need to stay strong and healthy. It is essential for bone and teeth health.', url: 'http://www.top10homeremedies.com/how-to/how-to-increase-your-calcium-level.html' }),
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure2.png', title: '20 Ways to Lower Your Blood Pressure Naturally', description: 'For people who aren’t able to bring their levels down naturally, medication may be necessary.', url: 'http://www.health.com/heart-disease/lower-blood-pressure-naturally#1-blood-pressure-natural' }),
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure3.png', title: '15 Natural Ways to Lower Your Blood Pressure', description: 'High blood pressure is a dangerous condition that can damage your heart. It affects one in three people in the US and 1 billion people worldwide. Here are 15 natural ways to combat high blood pressure.', url: 'https://www.healthline.com/nutrition/15-ways-to-lower-blood-pressure#section1' })
 	      );
 	    }
 	  }]);
@@ -29141,10 +29152,11 @@
 	            var win = window.open(_this2.props.url, '_blank');
 	            win.focus();
 	          } },
-	        _react2.default.createElement('img', { src: this.props.thumbnail }),
+	        _react2.default.createElement('img', { className: 'thumbnail', src: this.props.thumbnail }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'article-description' },
+	          _react2.default.createElement('img', { className: 'bookmarkAdd', src: '/images/bookmark-add.png' }),
 	          _react2.default.createElement(
 	            'h2',
 	            null,
@@ -29281,7 +29293,7 @@
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _BookmarkPanel = __webpack_require__(284);
+	var _BookmarkPanel = __webpack_require__(268);
 
 	var _BookmarkPanel2 = _interopRequireDefault(_BookmarkPanel);
 
@@ -29330,23 +29342,204 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Article = __webpack_require__(265);
+
+	var _Article2 = _interopRequireDefault(_Article);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BookmarkPanel = function (_Component) {
+	  _inherits(BookmarkPanel, _Component);
+
+	  function BookmarkPanel() {
+	    _classCallCheck(this, BookmarkPanel);
+
+	    return _possibleConstructorReturn(this, (BookmarkPanel.__proto__ || Object.getPrototypeOf(BookmarkPanel)).apply(this, arguments));
+	  }
+
+	  _createClass(BookmarkPanel, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'articleBox' },
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium1.jpg', title: '18 Surprising Dairy-Free Sources of Calcium', description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.', url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium' }),
+	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure.jpg', title: 'Exercise: A drug-free approach to lowering high blood pressure', description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.', url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206' })
+	      );
+	    }
+	  }]);
+
+	  return BookmarkPanel;
+	}(_react.Component);
+
+	;
+
+	exports.default = BookmarkPanel;
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Navigation = __webpack_require__(262);
+
+	var _Navigation2 = _interopRequireDefault(_Navigation);
+
+	var _ProfilePanel = __webpack_require__(270);
+
+	var _ProfilePanel2 = _interopRequireDefault(_ProfilePanel);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Profile = function (_Component) {
+	  _inherits(Profile, _Component);
+
+	  function Profile() {
+	    _classCallCheck(this, Profile);
+
+	    return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
+	  }
+
+	  _createClass(Profile, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'home-page' },
+	        _react2.default.createElement(_Navigation2.default, null),
+	        _react2.default.createElement(_ProfilePanel2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return Profile;
+	}(_react.Component);
+
+	;
+
+	exports.default = Profile;
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ProfilePanel = function (_Component) {
+	  _inherits(ProfilePanel, _Component);
+
+	  function ProfilePanel() {
+	    _classCallCheck(this, ProfilePanel);
+
+	    return _possibleConstructorReturn(this, (ProfilePanel.__proto__ || Object.getPrototypeOf(ProfilePanel)).apply(this, arguments));
+	  }
+
+	  _createClass(ProfilePanel, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "profile-panel" },
+	        _react2.default.createElement("img", { src: "/images/old_man.jpeg" }),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          _react2.default.createElement(
+	            "h3",
+	            null,
+	            "Name: John Smith"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "DOB: 04/01/1950"
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ProfilePanel;
+	}(_react.Component);
+
+	;
+
+	exports.default = ProfilePanel;
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.configure = configure;
 
 	var _redux = __webpack_require__(238);
 
 	var redux = _interopRequireWildcard(_redux);
 
-	var _reduxPromise = __webpack_require__(269);
+	var _reduxPromise = __webpack_require__(272);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
-	var _reducers = __webpack_require__(276);
+	var _reducers = __webpack_require__(279);
 
-	var _reduxThunk = __webpack_require__(277);
+	var _reduxThunk = __webpack_require__(280);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(278);
+	var _reduxLogger = __webpack_require__(281);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
@@ -29371,7 +29564,7 @@
 	;
 
 /***/ }),
-/* 269 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29382,7 +29575,7 @@
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(270);
+	var _fluxStandardAction = __webpack_require__(273);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -29409,7 +29602,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 270 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29420,7 +29613,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(271);
+	var _lodashIsplainobject = __webpack_require__(274);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -29439,7 +29632,7 @@
 	}
 
 /***/ }),
-/* 271 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29450,9 +29643,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(272),
-	    isArguments = __webpack_require__(273),
-	    keysIn = __webpack_require__(274);
+	var baseFor = __webpack_require__(275),
+	    isArguments = __webpack_require__(276),
+	    keysIn = __webpack_require__(277);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -29548,7 +29741,7 @@
 
 
 /***/ }),
-/* 272 */
+/* 275 */
 /***/ (function(module, exports) {
 
 	/**
@@ -29602,7 +29795,7 @@
 
 
 /***/ }),
-/* 273 */
+/* 276 */
 /***/ (function(module, exports) {
 
 	/**
@@ -29837,7 +30030,7 @@
 
 
 /***/ }),
-/* 274 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29848,8 +30041,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(273),
-	    isArray = __webpack_require__(275);
+	var isArguments = __webpack_require__(276),
+	    isArray = __webpack_require__(278);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -29975,7 +30168,7 @@
 
 
 /***/ }),
-/* 275 */
+/* 278 */
 /***/ (function(module, exports) {
 
 	/**
@@ -30161,7 +30354,7 @@
 
 
 /***/ }),
-/* 276 */
+/* 279 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -30186,7 +30379,7 @@
 	};
 
 /***/ }),
-/* 277 */
+/* 280 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -30214,7 +30407,7 @@
 	exports['default'] = thunk;
 
 /***/ }),
-/* 278 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30226,11 +30419,11 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _core = __webpack_require__(279);
+	var _core = __webpack_require__(282);
 
-	var _helpers = __webpack_require__(280);
+	var _helpers = __webpack_require__(283);
 
-	var _defaults = __webpack_require__(283);
+	var _defaults = __webpack_require__(286);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -30352,7 +30545,7 @@
 
 
 /***/ }),
-/* 279 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30365,9 +30558,9 @@
 
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(280);
+	var _helpers = __webpack_require__(283);
 
-	var _diff = __webpack_require__(281);
+	var _diff = __webpack_require__(284);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -30498,7 +30691,7 @@
 	}
 
 /***/ }),
-/* 280 */
+/* 283 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -30522,7 +30715,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ }),
-/* 281 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30532,7 +30725,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(282);
+	var _deepDiff = __webpack_require__(285);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -30621,7 +30814,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 282 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -31050,7 +31243,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 283 */
+/* 286 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -31099,62 +31292,6 @@
 	  transformer: undefined
 	};
 	module.exports = exports["default"];
-
-/***/ }),
-/* 284 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Article = __webpack_require__(265);
-
-	var _Article2 = _interopRequireDefault(_Article);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var BookmarkPanel = function (_Component) {
-	  _inherits(BookmarkPanel, _Component);
-
-	  function BookmarkPanel() {
-	    _classCallCheck(this, BookmarkPanel);
-
-	    return _possibleConstructorReturn(this, (BookmarkPanel.__proto__ || Object.getPrototypeOf(BookmarkPanel)).apply(this, arguments));
-	  }
-
-	  _createClass(BookmarkPanel, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'articleBox' },
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium1.jpg', title: '18 Surprising Dairy-Free Sources of Calcium', description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.', url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure.jpg', title: 'Exercise: A drug-free approach to lowering high blood pressure', description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.', url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206' })
-	      );
-	    }
-	  }]);
-
-	  return BookmarkPanel;
-	}(_react.Component);
-
-	;
-
-	exports.default = BookmarkPanel;
 
 /***/ })
 /******/ ]);

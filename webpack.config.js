@@ -13,7 +13,8 @@ module.exports = {
       './app/reducers',
       './app/components/Home',
       './app/components/Article',
-      './app/components/Bookmark'
+      './app/components/Bookmark',
+      './app/components/Profile'
     ],
     alias: {
     },

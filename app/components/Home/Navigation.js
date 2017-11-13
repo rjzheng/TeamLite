@@ -19,7 +19,9 @@ class Navigation extends Component {
             <a href="#">Bookmarks</a>
           </div>
         </div> */}
-        <span><i className="ion-android-person icon"></i></span>
+        <span onClick={() => {
+          this.context.router.push('/profile');
+        }}><i className="ion-android-person icon"></i></span>
         <span onClick={() => {
           this.context.router.push('/bookmark');
         }}><i className="ion-android-bookmark icon"></i></span>

@@ -7,11 +7,13 @@ import App from 'App';
 import HomePage from 'HomePage';
 import Login from 'Login';
 import Bookmark from 'Bookmark';
+import Profile from 'Profile';
 
 export default (
   <Route path="/" component={App}>
 		<IndexRoute component={Login} />
 		<Route path="/home" component={HomePage} />
     <Route path="/bookmark" component={Bookmark} />
+    <Route path="/profile" component={Profile} />
 	</Route>
 );
