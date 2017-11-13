@@ -7,11 +7,15 @@ class Article extends Component {
         var win = window.open(this.props.url, '_blank');
         win.focus();
       }}>
-        <img src={this.props.thumbnail}></img>
+
+
+        <img className="thumbnail" src={this.props.thumbnail}></img>
         <div className="article-description">
+          <img className="bookmarkAdd" src="/images/bookmark-add.png"></img>
           <h2>{this.props.title}</h2>
           <p>{this.props.description}</p>
         </div>
+
       </div>
     )
   };
