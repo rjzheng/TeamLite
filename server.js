@@ -1,10 +1,11 @@
 // Import libraries
 var express = require('express');
+var path = require('path');
 
 // Create express app
 var app = express();
 // Set the server url
-const ROOT_URL = 'localhost';
+const ROOT_URL = '192.168.1.68';
 // Use the environment's port, 8080 ass the default port
 var PORT = process.env.PORT || 8080;
 // App/server configuration

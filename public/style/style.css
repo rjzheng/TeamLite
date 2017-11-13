@@ -1,3 +1,7 @@
+/*##########################################
+####               GENERAL              ####
+###########################################*/
+
 html {
   background-color: #b7d5d9;
   color: #4d4d4d;
@@ -14,6 +18,33 @@ html {
 	height: 100%;
 	text-align: center;
 	margin: auto;
+}
+
+/*##########################################
+####             NAVIGATION             ####
+###########################################*/
+
+.navigation {
+		border-bottom: 1px solid black;
+}
+
+.navigation span:nth-child(n+2) {
+	padding-left: 5em;
+}
+
+.navigation i {
+  transition: opacity 0.25s;
+}
+
+.navigation i:hover {
+  opacity: 0.4;
+}
+
+.icon {
+  opacity: 0.7;
+	font-size: 5em;
+	color: black;
+	cursor: pointer;
 }
 
 .dropdown{
@@ -45,33 +76,67 @@ html {
 }
 
 .articleBox {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
 	background-color: #dae9eb;
 	border: 15px;
 	border-color: white;
 	border-radius: 0px 15px 15px 15px;
-	padding: 20px;
+	padding: 5px 20px 20px 20px;
 	margin: 20px;
+  float: left;
+  height: 25em;
+  overflow-y: scroll;
 }
 
-.articleTitle {
-	font-size: 20px;
+.article {
+  height: 110px;
+  border-bottom: 1px solid #000000;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 35em;
+  transition: opacity 0.3s;
 }
 
-.icon {
-  opacity: 0.7;
-	font-size: 40px;
-	color: black;
-	cursor: pointer;
+.article:hover {
+  opacity: 0.6;
 }
 
-.navigation {
-		border-bottom: 1px solid black;
+.article img {
+  float: left;
+  width: 6em;
+  height: 6em;
 }
 
-.navigation i:nth-child(n+2) {
-	padding-left: 30px;
+.article-description {
+  float: right;
+  text-align: left;
+  width: 80%;
+  margin-left: 10px;
 }
 
-.navigation a {
-	padding-left: 30px;
+.article-description h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.article-description p {
+  font-size: 14px;
+}
+
+#titleDiv {
+	padding: 30px;
+	text-align: center;
+}
+
+#titleMed {
+	color: #355f64;
+	display: inline-block;
+}
+
+#titleLite {
+	color: white;
+	display: inline-block;
 }
