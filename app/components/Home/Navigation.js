@@ -26,9 +26,9 @@ class Navigation extends Component {
           this.context.router.push('/bookmark');
         }}><i className="ion-android-bookmark icon"></i></span>
         <span><i className="ion-search icon"></i></span>
-        {/* <span onClick={() => {
+        <span onClick={() => {
           window.location.href = '/camera.html';
-        }}><i className="ion-camera icon"></i></span> */}
+        }}><i className="ion-camera icon"></i></span>
       </div>
     )
   };
