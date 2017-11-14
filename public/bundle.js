@@ -32247,7 +32247,7 @@
 				{
 					return _extends({}, state, {
 						bookmarkedArticles: state.bookmarkedArticles.filter(function (article) {
-							article.title != action.payload.title;
+							return article.title != action.payload.title;
 						})
 					});
 				}
@@ -33225,8 +33225,6 @@
 	        description: description,
 	        url: url
 	      };
-
-	      console.log("Article: ", article);
 
 	      this.props.removeBookmarkedArticle(article);
 	    }

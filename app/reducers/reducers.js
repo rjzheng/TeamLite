@@ -23,9 +23,9 @@ export var globalReducer = (state=GLOBAL_STATE, action) => {
 		case REMOVE_BOOKMARK: {
 			return {
 				...state,
-				bookmarkedArticles: state.bookmarkedArticles.filter((article) => {
+				bookmarkedArticles: state.bookmarkedArticles.filter((article) =>
 					article.title != action.payload.title
-				})
+				)
 			}
 		}
 		default:

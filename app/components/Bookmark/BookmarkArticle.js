@@ -24,7 +24,6 @@ class BookmarkArticle extends Component {
       url: url
     }
 
-    console.log("Article: ", article);
 
     this.props.removeBookmarkedArticle(article);
   }
