@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addBookmarkedArticle } from 'actions';
 
 class Article extends Component {
 
@@ -11,6 +14,19 @@ class Article extends Component {
       value: value,
       imgSrc: value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
     }
+  }
+
+  bookmarkArticle(thumbnail, title, description, url) {
+    var article = {
+      thumbnail: thumbnail,
+      title: title,
+      description: description,
+      url: url
+    }
+
+    console.log("Article: ", article);
+
+    this.props.addBookmarkedArticle(article);
   }
 
 
@@ -30,6 +46,7 @@ class Article extends Component {
               value : !this.state.value,
               imgSrc: !this.state.value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
             });
+            this.bookmarkArticle(this.props.thumbnail, this.props.title, this.props.description, this.props.url);
           }}></img>
 
           <h2  onClick={() => {
@@ -47,4 +64,4 @@ class Article extends Component {
   };
 };
 
-export default Article;
+export default connect(null, {addBookmarkedArticle})(Article);

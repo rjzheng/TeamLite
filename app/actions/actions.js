@@ -3,17 +3,20 @@ import axios from 'axios';
 import * as qs from 'qs';
 
 /* Return Type Keyword Constants */
-// export const LOGIN = 'LOGIN';
+export const ADD_BOOKMARK = "ADD_BOOKMARK";
+export const REMOVE_BOOKMARK = "REMOVE_BOOKMARK";
 
-/* Root URL for API calls */
-
-/* Action to authenticate the user */
-export function login(props) {
-
-	const request = axios.post(`${ROOT_URL}/login/`, qs.stringify(props) );
+export function addBookmarkedArticle(article) {
 
 	return {
-		type: LOGIN,
-		payload: request
-	};
-};
+		type: ADD_BOOKMARK,
+		payload: article
+	}
+}
+
+export function removeBookmarkedArticle(article) {
+	return {
+		type: REMOVE_BOOKMARK,
+		payload: article
+	}
+}

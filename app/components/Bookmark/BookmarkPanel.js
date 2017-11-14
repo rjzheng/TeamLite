@@ -1,12 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import BookmarkArticle from 'BookmarkArticle';
 
+@connect((store) => {
+  return {
+    bookmarkedArticles: store.globalReducer.bookmarkedArticles
+  };
+})
+
 class BookmarkPanel extends Component {
+
+  renderBookmarkedArticles() {
+    if (this.props.bookmarkedArticles.length == 0) {
+      return;
+    } else {
+      var articles = this.props.bookmarkedArticles;
+      console.log(articles);
+      var articleList = articles.map((article) => {
+        return (
+          <BookmarkArticle key={article.title} thumbnail={article.thumbnail} title={article.title} description={article.description} url={article.url} />
+        )
+      });
+
+      return (
+        <div className="articleBox">
+          {articleList}
+        </div>
+      )
+    }
+  };
+
   render() {
     return (
-      <div className="articleBox">
-        <BookmarkArticle thumbnail={'/images/Source-Of-Calcium1.jpg'} title={'18 Surprising Dairy-Free Sources of Calcium'} description={'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.'} url={'https://greatist.com/health/18-surprising-dairy-free-sources-calcium'}/>
-        <BookmarkArticle thumbnail={'/images/lower-blood-pressure.jpg'} title={'Exercise: A drug-free approach to lowering high blood pressure'} description={'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.'} url={'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206'}/>
+      <div>
+        {this.renderBookmarkedArticles()}
       </div>
     )
   };

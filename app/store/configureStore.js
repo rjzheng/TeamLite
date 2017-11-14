@@ -12,6 +12,7 @@ import logger from 'redux-logger';
 export function configure() {
   // Combine all custom reducers
   var reducer = redux.combineReducers({
+    globalReducer
   });
 
   // Create store with reducers, middleware and chrome dev tool extension
