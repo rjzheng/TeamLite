@@ -25,7 +25,6 @@ class Navigation extends Component {
         <span onClick={() => {
           this.context.router.push('/bookmark');
         }}><i className="ion-android-bookmark icon"></i></span>
-        //<span><i className="ion-search icon"></i></span>
         <span onClick={() => {
           var txt;
           var pResponse = prompt("Search for articles:", "Healthy lifestyle");
