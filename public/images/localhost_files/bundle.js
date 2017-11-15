@@ -33485,8 +33485,20 @@
 
 	        return _react2.default.createElement(
 	          'div',
-	          null,
-	          photoList
+	          { className: 'photoBox' },
+	          photoList,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'photo', onClick: function onClick() {
+	                window.location.href = '/camera.html';
+	              } },
+	            _react2.default.createElement('img', { src: '/images/upload-photo.png' }),
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Upload new medical record'
+	            )
+	          )
 	        );
 	      }
 	    }
@@ -33495,20 +33507,8 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'photoBox' },
-	        this.renderPhotos(),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'photo click', onClick: function onClick() {
-	              window.location.href = '/camera.html';
-	            } },
-	          _react2.default.createElement('img', { src: '/images/upload-photo.png' }),
-	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            'Upload new medical record'
-	          )
-	        )
+	        null,
+	        this.renderPhotos()
 	      );
 	    }
 	  }]);

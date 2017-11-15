@@ -6,6 +6,7 @@ import * as qs from 'qs';
 export const ADD_BOOKMARK = "ADD_BOOKMARK";
 export const REMOVE_BOOKMARK = "REMOVE_BOOKMARK";
 export const TOGGLE_BOOKMARK = "TOGGLE_BOOKMARK";
+export const REMOVE_PHOTO = "REMOVE_PHOTO";
 
 export function addBookmarkedArticle(article) {
 
@@ -26,5 +27,12 @@ export function toggleBookmark(article) {
 	return {
 		type: TOGGLE_BOOKMARK,
 		payload: article
+	}
+}
+
+export function removePhoto(photo) {
+	return {
+		type: REMOVE_PHOTO,
+		payload: photo
 	}
 }
