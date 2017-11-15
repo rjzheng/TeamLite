@@ -64,17 +64,17 @@ var article7 = {
 }
 
 var upload1 = {
-	src: '/uploadedPhotos/immunization-records.jpg',
+	src: '/uploadedPhotos/record-1.png',
 	date: '07/20/2017'
 }
 
 var upload2 = {
-	src: '/uploadedPhotos/missing-medical-records.jpg',
+	src: '/uploadedPhotos/record-2.png',
 	date: '09/12/2017'
 }
 
 var upload3 = {
-	src: '/uploadedPhotos/Release-forms.jpg',
+	src: '/uploadedPhotos/record-3.png',
 	date: '11/11/2017'
 }
 
