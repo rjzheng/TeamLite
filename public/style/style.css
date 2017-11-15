@@ -198,6 +198,7 @@ html {
   width: 35em;
   transition: opacity 0.3s;
   z-index: 0px;
+  cursor: pointer;
 }
 
 .photo:hover {

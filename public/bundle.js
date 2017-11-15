@@ -33564,10 +33564,16 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'photo' },
-	        _react2.default.createElement('img', { src: this.props.src }),
+	        _react2.default.createElement('img', { src: this.props.src, onClick: function onClick() {
+	            var win = window.open(_this2.props.src, '_blank');
+	            win.focus();
+	          } }),
 	        _react2.default.createElement(
 	          'h2',
-	          null,
+	          { onClick: function onClick() {
+	              var win = window.open(_this2.props.src, '_blank');
+	              win.focus();
+	            } },
 	          'Uploaded ',
 	          this.props.date
 	        ),
