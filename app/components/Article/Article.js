@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addBookmarkedArticle } from 'actions';
+import { addBookmarkedArticle, toggleBookmark, removeBookmarkedArticle } from 'actions';
 
 class Article extends Component {
 
   constructor(props) {
     super(props);
 
-    let value = true;
 
     this.state = {
-      value: value,
-      imgSrc: value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+      value: this.props.bookmarked,
+      imgSrc: this.props.bookmarked ? '/images/bookmark-remove.png': '/images/bookmark-add.png'
     }
   }
 
-  bookmarkArticle(thumbnail, title, description, url) {
+  bookmarkArticle(thumbnail, title, description, url, bookmarked) {
     var article = {
       thumbnail: thumbnail,
       title: title,
@@ -24,9 +23,13 @@ class Article extends Component {
       url: url
     }
 
-    console.log("Article: ", article);
+    if (bookmarked == false) {
+      this.props.addBookmarkedArticle(article);
+    } else {
+      this.props.removeBookmarkedArticle(article);
+    }
 
-    this.props.addBookmarkedArticle(article);
+    this.props.toggleBookmark(this.props.title);
   }
 
 
@@ -44,9 +47,9 @@ class Article extends Component {
           <img className="bookmarkAdd" src={this.state.imgSrc} onClick={() => {
             this.setState({
               value : !this.state.value,
-              imgSrc: !this.state.value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+              imgSrc: !this.state.value ? '/images/bookmark-remove.png' : '/images/bookmark-add.png'
             });
-            this.bookmarkArticle(this.props.thumbnail, this.props.title, this.props.description, this.props.url);
+            this.bookmarkArticle(this.props.thumbnail, this.props.title, this.props.description, this.props.url, this.state.value);
           }}></img>
 
           <h2  onClick={() => {
@@ -64,4 +67,4 @@ class Article extends Component {
   };
 };
 
-export default connect(null, {addBookmarkedArticle})(Article);
+export default connect(null, {addBookmarkedArticle, toggleBookmark, removeBookmarkedArticle})(Article);

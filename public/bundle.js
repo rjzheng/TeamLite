@@ -62,7 +62,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _configureStore = __webpack_require__(294);
+	var _configureStore = __webpack_require__(295);
 
 	var conf = _interopRequireWildcard(_configureStore);
 
@@ -28773,7 +28773,7 @@
 
 	var _Bookmark2 = _interopRequireDefault(_Bookmark);
 
-	var _Profile = __webpack_require__(292);
+	var _Profile = __webpack_require__(293);
 
 	var _Profile2 = _interopRequireDefault(_Profile);
 
@@ -29076,9 +29076,13 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _dec, _class;
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(231);
 
 	var _Article = __webpack_require__(265);
 
@@ -29092,7 +29096,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ArticlePanel = function (_Component) {
+	var ArticlePanel = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    articles: store.globalReducer.articles
+	  };
+	}), _dec(_class = function (_Component) {
 	  _inherits(ArticlePanel, _Component);
 
 	  function ArticlePanel() {
@@ -29102,25 +29110,36 @@
 	  }
 
 	  _createClass(ArticlePanel, [{
+	    key: 'renderArticles',
+	    value: function renderArticles() {
+	      if (this.props.articles.length == 0) {
+	        return;
+	      } else {
+	        var articles = this.props.articles;
+	        var articleList = articles.map(function (article) {
+	          return _react2.default.createElement(_Article2.default, { key: article.title, thumbnail: article.thumbnail, title: article.title, description: article.description, url: article.url, bookmarked: article.bookmarked });
+	        });
+
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'articleBox' },
+	          articleList
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'articleBox' },
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium1.jpg', title: '18 Surprising Dairy-Free Sources of Calcium', description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.', url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure.jpg', title: 'Exercise: A drug-free approach to lowering high blood pressure', description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.', url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-sugar-level.jpg', title: '15 Easy Ways to Lower Blood Sugar Levels Naturally', description: 'One study from 2012 reported that 12–14% of US adults had type 2 diabetes, while 37–38% were classified as pre-diabetic. This means that 50% of all US adults have diabetes or pre-diabetes. Here are 15 easy ways to lower blood sugar levels naturally', url: 'https://www.healthline.com/nutrition/15-ways-to-lower-blood-sugar' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/raise-iron-level.jpg', title: 'How to Raise Your Iron Level Without Supplements', description: 'You can choose iron supplements to improve your levels, but following a healthy diet including iron-rich foods, and pairing foods for optimal absorption can help you increase your iron levels naturally.', url: 'http://healthyeating.sfgate.com/raise-iron-level-supplements-4850.html' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/Source-Of-Calcium2.png', title: 'How to Increase Your Calcium Level', description: 'Calcium is a very important mineral that we need to stay strong and healthy. It is essential for bone and teeth health.', url: 'http://www.top10homeremedies.com/how-to/how-to-increase-your-calcium-level.html' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure2.png', title: '20 Ways to Lower Your Blood Pressure Naturally', description: 'For people who aren’t able to bring their levels down naturally, medication may be necessary.', url: 'http://www.health.com/heart-disease/lower-blood-pressure-naturally#1-blood-pressure-natural' }),
-	        _react2.default.createElement(_Article2.default, { thumbnail: '/images/lower-blood-pressure3.png', title: '15 Natural Ways to Lower Your Blood Pressure', description: 'High blood pressure is a dangerous condition that can damage your heart. It affects one in three people in the US and 1 billion people worldwide. Here are 15 natural ways to combat high blood pressure.', url: 'https://www.healthline.com/nutrition/15-ways-to-lower-blood-pressure#section1' })
+	        null,
+	        this.renderArticles()
 	      );
 	    }
 	  }]);
 
 	  return ArticlePanel;
-	}(_react.Component);
-
+	}(_react.Component)) || _class);
 	;
 
 	exports.default = ArticlePanel;
@@ -29161,18 +29180,16 @@
 
 	    var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
 
-	    var value = true;
-
 	    _this.state = {
-	      value: value,
-	      imgSrc: value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	      value: _this.props.bookmarked,
+	      imgSrc: _this.props.bookmarked ? '/images/bookmark-remove.png' : '/images/bookmark-add.png'
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Article, [{
 	    key: 'bookmarkArticle',
-	    value: function bookmarkArticle(thumbnail, title, description, url) {
+	    value: function bookmarkArticle(thumbnail, title, description, url, bookmarked) {
 	      var article = {
 	        thumbnail: thumbnail,
 	        title: title,
@@ -29180,9 +29197,13 @@
 	        url: url
 	      };
 
-	      console.log("Article: ", article);
+	      if (bookmarked == false) {
+	        this.props.addBookmarkedArticle(article);
+	      } else {
+	        this.props.removeBookmarkedArticle(article);
+	      }
 
-	      this.props.addBookmarkedArticle(article);
+	      this.props.toggleBookmark(this.props.title);
 	    }
 	  }, {
 	    key: 'render',
@@ -29202,9 +29223,9 @@
 	          _react2.default.createElement('img', { className: 'bookmarkAdd', src: this.state.imgSrc, onClick: function onClick() {
 	              _this2.setState({
 	                value: !_this2.state.value,
-	                imgSrc: !_this2.state.value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	                imgSrc: !_this2.state.value ? '/images/bookmark-remove.png' : '/images/bookmark-add.png'
 	              });
-	              _this2.bookmarkArticle(_this2.props.thumbnail, _this2.props.title, _this2.props.description, _this2.props.url);
+	              _this2.bookmarkArticle(_this2.props.thumbnail, _this2.props.title, _this2.props.description, _this2.props.url, _this2.state.value);
 	            } }),
 	          _react2.default.createElement(
 	            'h2',
@@ -29232,7 +29253,7 @@
 
 	;
 
-	exports.default = (0, _reactRedux.connect)(null, { addBookmarkedArticle: _actions.addBookmarkedArticle })(Article);
+	exports.default = (0, _reactRedux.connect)(null, { addBookmarkedArticle: _actions.addBookmarkedArticle, toggleBookmark: _actions.toggleBookmark, removeBookmarkedArticle: _actions.removeBookmarkedArticle })(Article);
 
 /***/ }),
 /* 266 */
@@ -29243,9 +29264,10 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.REMOVE_BOOKMARK = exports.ADD_BOOKMARK = undefined;
+	exports.TOGGLE_BOOKMARK = exports.REMOVE_BOOKMARK = exports.ADD_BOOKMARK = undefined;
 	exports.addBookmarkedArticle = addBookmarkedArticle;
 	exports.removeBookmarkedArticle = removeBookmarkedArticle;
+	exports.toggleBookmark = toggleBookmark;
 
 	var _axios = __webpack_require__(267);
 
@@ -29263,6 +29285,7 @@
 	/* Node Modules */
 	var ADD_BOOKMARK = exports.ADD_BOOKMARK = "ADD_BOOKMARK";
 	var REMOVE_BOOKMARK = exports.REMOVE_BOOKMARK = "REMOVE_BOOKMARK";
+	var TOGGLE_BOOKMARK = exports.TOGGLE_BOOKMARK = "TOGGLE_BOOKMARK";
 
 	function addBookmarkedArticle(article) {
 
@@ -29275,6 +29298,13 @@
 	function removeBookmarkedArticle(article) {
 		return {
 			type: REMOVE_BOOKMARK,
+			payload: article
+		};
+	}
+
+	function toggleBookmark(article) {
+		return {
+			type: TOGGLE_BOOKMARK,
 			payload: article
 		};
 	}
@@ -31189,7 +31219,7 @@
 
 	var _reactRedux = __webpack_require__(231);
 
-	var _BookmarkArticle = __webpack_require__(310);
+	var _BookmarkArticle = __webpack_require__(292);
 
 	var _BookmarkArticle2 = _interopRequireDefault(_BookmarkArticle);
 
@@ -31221,7 +31251,6 @@
 	        return;
 	      } else {
 	        var articles = this.props.bookmarkedArticles;
-	        console.log(articles);
 	        var articleList = articles.map(function (article) {
 	          return _react2.default.createElement(_BookmarkArticle2.default, { key: article.title, thumbnail: article.thumbnail, title: article.title, description: article.description, url: article.url });
 	        });
@@ -31266,13 +31295,124 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(231);
+
+	var _actions = __webpack_require__(266);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BookmarkArticle = function (_Component) {
+	  _inherits(BookmarkArticle, _Component);
+
+	  function BookmarkArticle(props) {
+	    _classCallCheck(this, BookmarkArticle);
+
+	    var _this = _possibleConstructorReturn(this, (BookmarkArticle.__proto__ || Object.getPrototypeOf(BookmarkArticle)).call(this, props));
+
+	    var value = false;
+
+	    _this.state = {
+	      value: value,
+	      imgSrc: value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	    };
+	    return _this;
+	  }
+
+	  _createClass(BookmarkArticle, [{
+	    key: 'removeBookmarkArticle',
+	    value: function removeBookmarkArticle(thumbnail, title, description, url) {
+	      var article = {
+	        thumbnail: thumbnail,
+	        title: title,
+	        description: description,
+	        url: url
+	      };
+
+	      this.props.removeBookmarkedArticle(article);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'article' },
+	        _react2.default.createElement('img', { className: 'thumbnail', src: this.props.thumbnail, onClick: function onClick() {
+	            var win = window.open(_this2.props.url, '_blank');
+	            win.focus();
+	          } }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'article-description' },
+	          _react2.default.createElement('img', { className: 'bookmarkAdd', src: this.state.imgSrc, onClick: function onClick() {
+	              _this2.setState({
+	                value: !_this2.state.value,
+	                imgSrc: !_this2.state.value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
+	              });
+	              _this2.removeBookmarkArticle(_this2.props.thumbnail, _this2.props.title, _this2.props.description, _this2.props.url);
+	            } }),
+	          _react2.default.createElement(
+	            'h2',
+	            { onClick: function onClick() {
+	                var win = window.open(_this2.props.url, '_blank');
+	                win.focus();
+	              } },
+	            this.props.title
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { onClick: function onClick() {
+	                var win = window.open(_this2.props.url, '_blank');
+	                win.focus();
+	              } },
+	            this.props.description
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return BookmarkArticle;
+	}(_react.Component);
+
+	;
+
+	exports.default = (0, _reactRedux.connect)(null, { removeBookmarkedArticle: _actions.removeBookmarkedArticle })(BookmarkArticle);
+
+/***/ }),
+/* 293 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _Navigation = __webpack_require__(262);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _ProfilePanel = __webpack_require__(293);
+	var _ProfilePanel = __webpack_require__(294);
 
 	var _ProfilePanel2 = _interopRequireDefault(_ProfilePanel);
+
+	var _PhotoPanel = __webpack_require__(311);
+
+	var _PhotoPanel2 = _interopRequireDefault(_PhotoPanel);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31298,7 +31438,8 @@
 	        'div',
 	        { className: 'home-page' },
 	        _react2.default.createElement(_Navigation2.default, null),
-	        _react2.default.createElement(_ProfilePanel2.default, null)
+	        _react2.default.createElement(_ProfilePanel2.default, null),
+	        _react2.default.createElement(_PhotoPanel2.default, null)
 	      );
 	    }
 	  }]);
@@ -31311,7 +31452,7 @@
 	exports.default = Profile;
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31376,7 +31517,7 @@
 	exports.default = ProfilePanel;
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31390,17 +31531,17 @@
 
 	var redux = _interopRequireWildcard(_redux);
 
-	var _reduxPromise = __webpack_require__(295);
+	var _reduxPromise = __webpack_require__(296);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
-	var _reducers = __webpack_require__(302);
+	var _reducers = __webpack_require__(303);
 
-	var _reduxThunk = __webpack_require__(303);
+	var _reduxThunk = __webpack_require__(304);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(304);
+	var _reduxLogger = __webpack_require__(305);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
@@ -31427,7 +31568,7 @@
 	;
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31438,7 +31579,7 @@
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(296);
+	var _fluxStandardAction = __webpack_require__(297);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -31465,7 +31606,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31476,7 +31617,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(297);
+	var _lodashIsplainobject = __webpack_require__(298);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -31495,7 +31636,7 @@
 	}
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -31506,9 +31647,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(298),
-	    isArguments = __webpack_require__(299),
-	    keysIn = __webpack_require__(300);
+	var baseFor = __webpack_require__(299),
+	    isArguments = __webpack_require__(300),
+	    keysIn = __webpack_require__(301);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -31604,7 +31745,7 @@
 
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports) {
 
 	/**
@@ -31658,7 +31799,7 @@
 
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports) {
 
 	/**
@@ -31893,7 +32034,7 @@
 
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -31904,8 +32045,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(299),
-	    isArray = __webpack_require__(301);
+	var isArguments = __webpack_require__(300),
+	    isArray = __webpack_require__(302);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -32031,7 +32172,7 @@
 
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports) {
 
 	/**
@@ -32217,7 +32358,7 @@
 
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32235,10 +32376,66 @@
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-	// Initial state params
-	var GLOBAL_STATE = {
+	var article1 = {
+		thumbnail: '/images/Source-Of-Calcium1.jpg',
+		title: '18 Surprising Dairy-Free Sources of Calcium',
+		description: 'Here’s a list of foods and beverages filled with calcium (no cows required), along with recipes to help make them an everyday occurrence in a variety of meals.',
+		url: 'https://greatist.com/health/18-surprising-dairy-free-sources-calcium',
+		bookmarked: false
+	};
+
+	var article2 = {
+		thumbnail: '/images/lower-blood-pressure.jpg',
+		title: 'Exercise: A drug-free approach to lowering high blood pressure',
+		description: 'Having high blood pressure and not getting enough exercise are closely related. Discover how small changes in your daily routine can make a big difference.',
+		url: 'https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20045206',
+		bookmarked: false
+	};
+
+	var article3 = {
+		thumbnail: '/images/lower-sugar-level.jpg',
+		title: '15 Easy Ways to Lower Blood Sugar Levels Naturally',
+		description: 'One study from 2012 reported that 12–14% of US adults had type 2 diabetes, while 37–38% were classified as pre-diabetic. This means that 50% of all US adults have diabetes or pre-diabetes. Here are 15 easy ways to lower blood sugar levels naturally',
+		url: 'https://www.healthline.com/nutrition/15-ways-to-lower-blood-sugar',
+		bookmarked: false
+	};
+
+	var article4 = {
+		thumbnail: '/images/raise-iron-level.jpg',
+		title: 'How to Raise Your Iron Level Without Supplements',
+		description: 'You can choose iron supplements to improve your levels, but following a healthy diet including iron-rich foods, and pairing foods for optimal absorption can help you increase your iron levels naturally.',
+		url: 'http://healthyeating.sfgate.com/raise-iron-level-supplements-4850.html',
+		bookmarked: false
+	};
+
+	var article5 = {
+		thumbnail: '/images/Source-Of-Calcium2.png',
+		title: 'How to Increase Your Calcium Level',
+		description: 'Calcium is a very important mineral that we need to stay strong and healthy. It is essential for bone and teeth health.',
+		url: 'http://www.top10homeremedies.com/how-to/how-to-increase-your-calcium-level.html',
+		bookmarked: false
+	};
+
+	var article6 = {
+		thumbnail: '/images/lower-blood-pressure2.png',
+		title: '20 Ways to Lower Your Blood Pressure Naturally',
+		description: 'For people who aren’t able to bring their levels down naturally, medication may be necessary.',
+		url: 'http://www.health.com/heart-disease/lower-blood-pressure-naturally#1-blood-pressure-natural',
+		bookmarked: false
+	};
+
+	var article7 = {
+		thumbnail: '/images/lower-blood-pressure3.png',
+		title: '15 Natural Ways to Lower Your Blood Pressure',
+		description: 'High blood pressure is a dangerous condition that can damage your heart. It affects one in three people in the US and 1 billion people worldwide. Here are 15 natural ways to combat high blood pressure.',
+		url: 'https://www.healthline.com/nutrition/15-ways-to-lower-blood-pressure#section1',
+		bookmarked: false
+		// Initial state params
+	};var GLOBAL_STATE = {
 		globalVar: [],
-		bookmarkedArticles: []
+		bookmarkedArticles: [],
+		articles: [article1, article2, article3, article4, article5, article6, article7]
+
 	};
 
 	var globalReducer = exports.globalReducer = function globalReducer() {
@@ -32252,6 +32449,7 @@
 						bookmarkedArticles: [].concat(_toConsumableArray(state.bookmarkedArticles), [action.payload])
 					});
 				}
+
 			case _actions.REMOVE_BOOKMARK:
 				{
 					return _extends({}, state, {
@@ -32260,13 +32458,29 @@
 						})
 					});
 				}
+
+			case _actions.TOGGLE_BOOKMARK:
+				{
+					state.articles.forEach(function (article) {
+						if (article.title == action.payload) {
+							article.bookmarked = !article.bookmarked;
+						}
+					});
+
+					console.log(state.articles);
+
+					return _extends({}, state, {
+						articles: state.articles
+					});
+				}
+
 			default:
 				return state;
 		}
 	};
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -32294,7 +32508,7 @@
 	exports['default'] = thunk;
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32306,11 +32520,11 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _core = __webpack_require__(305);
+	var _core = __webpack_require__(306);
 
-	var _helpers = __webpack_require__(306);
+	var _helpers = __webpack_require__(307);
 
-	var _defaults = __webpack_require__(309);
+	var _defaults = __webpack_require__(310);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -32432,7 +32646,7 @@
 
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32445,9 +32659,9 @@
 
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(306);
+	var _helpers = __webpack_require__(307);
 
-	var _diff = __webpack_require__(307);
+	var _diff = __webpack_require__(308);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -32578,7 +32792,7 @@
 	}
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -32602,7 +32816,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32612,7 +32826,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(308);
+	var _deepDiff = __webpack_require__(309);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -32701,7 +32915,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -33130,7 +33344,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -33181,7 +33395,7 @@
 	module.exports = exports["default"];
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33196,9 +33410,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(231);
+	var _Photo = __webpack_require__(312);
 
-	var _actions = __webpack_require__(266);
+	var _Photo2 = _interopRequireDefault(_Photo);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33208,84 +33422,103 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var BookmarkArticle = function (_Component) {
-	  _inherits(BookmarkArticle, _Component);
+	var PhotoPanel = function (_Component) {
+	  _inherits(PhotoPanel, _Component);
 
-	  function BookmarkArticle(props) {
-	    _classCallCheck(this, BookmarkArticle);
+	  function PhotoPanel() {
+	    _classCallCheck(this, PhotoPanel);
 
-	    var _this = _possibleConstructorReturn(this, (BookmarkArticle.__proto__ || Object.getPrototypeOf(BookmarkArticle)).call(this, props));
-
-	    var value = false;
-
-	    _this.state = {
-	      value: value,
-	      imgSrc: value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (PhotoPanel.__proto__ || Object.getPrototypeOf(PhotoPanel)).apply(this, arguments));
 	  }
 
-	  _createClass(BookmarkArticle, [{
-	    key: 'removeBookmarkArticle',
-	    value: function removeBookmarkArticle(thumbnail, title, description, url) {
-	      var article = {
-	        thumbnail: thumbnail,
-	        title: title,
-	        description: description,
-	        url: url
-	      };
-
-	      this.props.removeBookmarkedArticle(article);
-	    }
-	  }, {
+	  _createClass(PhotoPanel, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'article' },
-	        _react2.default.createElement('img', { className: 'thumbnail', src: this.props.thumbnail, onClick: function onClick() {
-	            var win = window.open(_this2.props.url, '_blank');
-	            win.focus();
-	          } }),
+	        { className: 'photoBox' },
+	        _react2.default.createElement(_Photo2.default, { src: '/uploadedPhotos/immunization-records.jpg', date: '07/20/2017' }),
+	        _react2.default.createElement(_Photo2.default, { src: '/uploadedPhotos/missing-medical-records.jpg', date: '09/12/2017' }),
+	        _react2.default.createElement(_Photo2.default, { src: '/uploadedPhotos/Release-forms.jpg', date: '11/11/2017' }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'article-description' },
-	          _react2.default.createElement('img', { className: 'bookmarkAdd', src: this.state.imgSrc, onClick: function onClick() {
-	              _this2.setState({
-	                value: !_this2.state.value,
-	                imgSrc: !_this2.state.value ? '/images/bookmark-add.png' : '/images/bookmark-remove.png'
-	              });
-	              _this2.removeBookmarkArticle(_this2.props.thumbnail, _this2.props.title, _this2.props.description, _this2.props.url);
-	            } }),
+	          { className: 'photo', onClick: function onClick() {
+	              window.location.href = '/camera.html';
+	            } },
+	          _react2.default.createElement('img', { src: '/images/upload-photo.png' }),
 	          _react2.default.createElement(
 	            'h2',
-	            { onClick: function onClick() {
-	                var win = window.open(_this2.props.url, '_blank');
-	                win.focus();
-	              } },
-	            this.props.title
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { onClick: function onClick() {
-	                var win = window.open(_this2.props.url, '_blank');
-	                win.focus();
-	              } },
-	            this.props.description
+	            null,
+	            'Upload new medical record'
 	          )
 	        )
 	      );
 	    }
 	  }]);
 
-	  return BookmarkArticle;
+	  return PhotoPanel;
 	}(_react.Component);
 
 	;
 
-	exports.default = (0, _reactRedux.connect)(null, { removeBookmarkedArticle: _actions.removeBookmarkedArticle })(BookmarkArticle);
+	exports.default = PhotoPanel;
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Photo = function (_Component) {
+	  _inherits(Photo, _Component);
+
+	  function Photo() {
+	    _classCallCheck(this, Photo);
+
+	    return _possibleConstructorReturn(this, (Photo.__proto__ || Object.getPrototypeOf(Photo)).apply(this, arguments));
+	  }
+
+	  _createClass(Photo, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "photo" },
+	        _react2.default.createElement("img", { src: this.props.src }),
+	        _react2.default.createElement(
+	          "h2",
+	          null,
+	          "Uploaded ",
+	          this.props.date
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Photo;
+	}(_react.Component);
+
+	;
+
+	exports.default = Photo;
 
 /***/ })
 /******/ ]);
