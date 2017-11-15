@@ -15,7 +15,6 @@ class BookmarkPanel extends Component {
       return;
     } else {
       var articles = this.props.bookmarkedArticles;
-      console.log(articles);
       var articleList = articles.map((article) => {
         return (
           <BookmarkArticle key={article.title} thumbnail={article.thumbnail} title={article.title} description={article.description} url={article.url} />
