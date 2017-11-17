@@ -90,6 +90,8 @@ const GLOBAL_STATE = {
 export var globalReducer = (state=GLOBAL_STATE, action) => {
 	switch(action.type) {
 		case ADD_BOOKMARK: {
+
+
 			return {
 				...state,
 				bookmarkedArticles: [...state.bookmarkedArticles, action.payload]
@@ -97,11 +99,13 @@ export var globalReducer = (state=GLOBAL_STATE, action) => {
 		}
 
 		case REMOVE_BOOKMARK: {
+
 			return {
 				...state,
 				bookmarkedArticles: state.bookmarkedArticles.filter((article) =>
 					article.title != action.payload.title
-				)
+				),
+				articles: state.articles
 			}
 		}
 

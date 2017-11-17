@@ -62,7 +62,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _configureStore = __webpack_require__(295);
+	var _configureStore = __webpack_require__(297);
 
 	var conf = _interopRequireWildcard(_configureStore);
 
@@ -28911,7 +28911,7 @@
 /* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28943,54 +28943,59 @@
 	  }
 
 	  _createClass(Navigation, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      var _this2 = this;
 
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'navigation' },
+	        "div",
+	        { className: "navigation" },
+	        _react2.default.createElement("img", { src: "/images/Logo.png" }),
 	        _react2.default.createElement(
-	          'span',
-	          { onClick: function onClick() {
-	              _this2.context.router.push('/home');
-	            } },
-	          _react2.default.createElement('i', { className: 'ion-ios-home icon' })
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { onClick: function onClick() {
-	              _this2.context.router.push('/profile');
-	            } },
-	          _react2.default.createElement('i', { className: 'ion-android-person icon' })
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { onClick: function onClick() {
-	              _this2.context.router.push('/bookmark');
-	            } },
-	          _react2.default.createElement('i', { className: 'ion-android-bookmark icon' })
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { onClick: function onClick() {
-	              var txt;
-	              var pResponse = prompt("Search for articles:", "Healthy lifestyle");
-	              if (pResponse == null || pResponse == "") {
-	                txt = "User cancelled the prompt.";
-	              } else {
-	                txt = "Searching for " + pResponse;
-	              }
-	              _this2.context.router.push('/home');
-	            } },
-	          _react2.default.createElement('i', { className: 'ion-search icon' })
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { onClick: function onClick() {
-	              window.location.href = '/camera.html';
-	            } },
-	          _react2.default.createElement('i', { className: 'ion-camera icon' })
+	          "div",
+	          { className: "menu-items" },
+	          _react2.default.createElement(
+	            "span",
+	            { onClick: function onClick() {
+	                _this2.context.router.push('/home');
+	              } },
+	            _react2.default.createElement("i", { className: "ion-ios-home icon" })
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            { onClick: function onClick() {
+	                _this2.context.router.push('/profile');
+	              } },
+	            _react2.default.createElement("i", { className: "ion-android-person icon" })
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            { onClick: function onClick() {
+	                _this2.context.router.push('/bookmark');
+	              } },
+	            _react2.default.createElement("i", { className: "ion-android-bookmark icon" })
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            { onClick: function onClick() {
+	                var txt;
+	                var pResponse = prompt("Search for articles:", "Healthy lifestyle");
+	                if (pResponse == null || pResponse == "") {
+	                  txt = "User cancelled the prompt.";
+	                } else {
+	                  txt = "Searching for " + pResponse;
+	                }
+	                _this2.context.router.push('/home');
+	              } },
+	            _react2.default.createElement("i", { className: "ion-search icon" })
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            { onClick: function onClick() {
+	                window.location.href = '/camera.html';
+	              } },
+	            _react2.default.createElement("i", { className: "ion-camera icon" })
+	          )
 	        )
 	      );
 	    }
@@ -31196,6 +31201,11 @@
 	        'div',
 	        { className: 'home-page' },
 	        _react2.default.createElement(_Navigation2.default, null),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Below are your bookmarks'
+	        ),
 	        _react2.default.createElement(_BookmarkPanel2.default, null)
 	      );
 	    }
@@ -31257,7 +31267,23 @@
 	    key: 'renderBookmarkedArticles',
 	    value: function renderBookmarkedArticles() {
 	      if (this.props.bookmarkedArticles.length == 0) {
-	        return;
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'articleBox' },
+	          _react2.default.createElement(
+	            'h2',
+	            { id: 'empty-message' },
+	            'There are currently no bookmarked articles... ',
+	            _react2.default.createElement('br', null),
+	            'To bookmark an article, please go to the home page and click the ',
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              _react2.default.createElement('img', { src: '/images/bookmark-add.png', id: 'bookmark-inline' }),
+	              ' icon.'
+	            )
+	          )
+	        );
 	      } else {
 	        var articles = this.props.bookmarkedArticles;
 	        var articleList = articles.map(function (article) {
@@ -31344,6 +31370,7 @@
 	      };
 
 	      this.props.removeBookmarkedArticle(article);
+	      this.props.toggleBookmark(this.props.title);
 	    }
 	  }, {
 	    key: 'render',
@@ -31393,7 +31420,7 @@
 
 	;
 
-	exports.default = (0, _reactRedux.connect)(null, { removeBookmarkedArticle: _actions.removeBookmarkedArticle })(BookmarkArticle);
+	exports.default = (0, _reactRedux.connect)(null, { removeBookmarkedArticle: _actions.removeBookmarkedArticle, toggleBookmark: _actions.toggleBookmark })(BookmarkArticle);
 
 /***/ }),
 /* 293 */
@@ -31419,7 +31446,7 @@
 
 	var _ProfilePanel2 = _interopRequireDefault(_ProfilePanel);
 
-	var _PhotoPanel = __webpack_require__(311);
+	var _PhotoPanel = __webpack_require__(295);
 
 	var _PhotoPanel2 = _interopRequireDefault(_PhotoPanel);
 
@@ -31534,23 +31561,191 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(231);
+
+	var _Photo = __webpack_require__(296);
+
+	var _Photo2 = _interopRequireDefault(_Photo);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PhotoPanel = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return {
+	    photos: store.globalReducer.photos
+	  };
+	}), _dec(_class = function (_Component) {
+	  _inherits(PhotoPanel, _Component);
+
+	  function PhotoPanel() {
+	    _classCallCheck(this, PhotoPanel);
+
+	    return _possibleConstructorReturn(this, (PhotoPanel.__proto__ || Object.getPrototypeOf(PhotoPanel)).apply(this, arguments));
+	  }
+
+	  _createClass(PhotoPanel, [{
+	    key: 'renderPhotos',
+	    value: function renderPhotos() {
+	      if (this.props.photos.length == 0) {
+	        return;
+	      } else {
+	        var photos = this.props.photos;
+	        var photoList = photos.map(function (photo) {
+	          return _react2.default.createElement(_Photo2.default, { key: photo.src, src: photo.src, date: photo.date });
+	        });
+
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          photoList
+	        );
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'photoBox' },
+	        this.renderPhotos(),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'photo click', onClick: function onClick() {
+	              window.location.href = '/camera.html';
+	            } },
+	          _react2.default.createElement('img', { src: '/images/upload-photo.png' }),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Upload new medical record'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return PhotoPanel;
+	}(_react.Component)) || _class);
+	;
+
+	exports.default = PhotoPanel;
+
+/***/ }),
+/* 296 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(231);
+
+	var _actions = __webpack_require__(266);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Photo = function (_Component) {
+	  _inherits(Photo, _Component);
+
+	  function Photo() {
+	    _classCallCheck(this, Photo);
+
+	    return _possibleConstructorReturn(this, (Photo.__proto__ || Object.getPrototypeOf(Photo)).apply(this, arguments));
+	  }
+
+	  _createClass(Photo, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'photo' },
+	        _react2.default.createElement('img', { src: this.props.src, onClick: function onClick() {
+	            var win = window.open(_this2.props.src, '_blank');
+	            win.focus();
+	          } }),
+	        _react2.default.createElement(
+	          'h2',
+	          { onClick: function onClick() {
+	              var win = window.open(_this2.props.src, '_blank');
+	              win.focus();
+	            } },
+	          'Uploaded ',
+	          this.props.date
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { onClick: function onClick() {
+	              _this2.props.removePhoto(_this2.props.src);
+	            } },
+	          _react2.default.createElement('i', { className: 'ion-trash-a trash-icon' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Photo;
+	}(_react.Component);
+
+	;
+
+	exports.default = (0, _reactRedux.connect)(null, { removePhoto: _actions.removePhoto })(Photo);
+
+/***/ }),
+/* 297 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.configure = configure;
 
 	var _redux = __webpack_require__(238);
 
 	var redux = _interopRequireWildcard(_redux);
 
-	var _reduxPromise = __webpack_require__(296);
+	var _reduxPromise = __webpack_require__(298);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
-	var _reducers = __webpack_require__(303);
+	var _reducers = __webpack_require__(305);
 
-	var _reduxThunk = __webpack_require__(304);
+	var _reduxThunk = __webpack_require__(306);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(305);
+	var _reduxLogger = __webpack_require__(307);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
@@ -31577,7 +31772,7 @@
 	;
 
 /***/ }),
-/* 296 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31588,7 +31783,7 @@
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(297);
+	var _fluxStandardAction = __webpack_require__(299);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -31615,7 +31810,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 297 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31626,7 +31821,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(298);
+	var _lodashIsplainobject = __webpack_require__(300);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -31645,7 +31840,7 @@
 	}
 
 /***/ }),
-/* 298 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -31656,9 +31851,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(299),
-	    isArguments = __webpack_require__(300),
-	    keysIn = __webpack_require__(301);
+	var baseFor = __webpack_require__(301),
+	    isArguments = __webpack_require__(302),
+	    keysIn = __webpack_require__(303);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -31754,7 +31949,7 @@
 
 
 /***/ }),
-/* 299 */
+/* 301 */
 /***/ (function(module, exports) {
 
 	/**
@@ -31808,7 +32003,7 @@
 
 
 /***/ }),
-/* 300 */
+/* 302 */
 /***/ (function(module, exports) {
 
 	/**
@@ -32043,7 +32238,7 @@
 
 
 /***/ }),
-/* 301 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32054,8 +32249,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(300),
-	    isArray = __webpack_require__(302);
+	var isArguments = __webpack_require__(302),
+	    isArray = __webpack_require__(304);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -32181,7 +32376,7 @@
 
 
 /***/ }),
-/* 302 */
+/* 304 */
 /***/ (function(module, exports) {
 
 	/**
@@ -32367,7 +32562,7 @@
 
 
 /***/ }),
-/* 303 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32471,6 +32666,7 @@
 		switch (action.type) {
 			case _actions.ADD_BOOKMARK:
 				{
+
 					return _extends({}, state, {
 						bookmarkedArticles: [].concat(_toConsumableArray(state.bookmarkedArticles), [action.payload])
 					});
@@ -32478,10 +32674,12 @@
 
 			case _actions.REMOVE_BOOKMARK:
 				{
+
 					return _extends({}, state, {
 						bookmarkedArticles: state.bookmarkedArticles.filter(function (article) {
 							return article.title != action.payload.title;
-						})
+						}),
+						articles: state.articles
 					});
 				}
 
@@ -32513,7 +32711,7 @@
 	};
 
 /***/ }),
-/* 304 */
+/* 306 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -32541,7 +32739,7 @@
 	exports['default'] = thunk;
 
 /***/ }),
-/* 305 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32553,11 +32751,11 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _core = __webpack_require__(306);
+	var _core = __webpack_require__(308);
 
-	var _helpers = __webpack_require__(307);
+	var _helpers = __webpack_require__(309);
 
-	var _defaults = __webpack_require__(310);
+	var _defaults = __webpack_require__(312);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -32679,7 +32877,7 @@
 
 
 /***/ }),
-/* 306 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32692,9 +32890,9 @@
 
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(307);
+	var _helpers = __webpack_require__(309);
 
-	var _diff = __webpack_require__(308);
+	var _diff = __webpack_require__(310);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -32825,7 +33023,7 @@
 	}
 
 /***/ }),
-/* 307 */
+/* 309 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -32849,7 +33047,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ }),
-/* 308 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32859,7 +33057,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(309);
+	var _deepDiff = __webpack_require__(311);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -32948,7 +33146,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 309 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -33377,7 +33575,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 310 */
+/* 312 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -33426,174 +33624,6 @@
 	  transformer: undefined
 	};
 	module.exports = exports["default"];
-
-/***/ }),
-/* 311 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _dec, _class;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(231);
-
-	var _Photo = __webpack_require__(312);
-
-	var _Photo2 = _interopRequireDefault(_Photo);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var PhotoPanel = (_dec = (0, _reactRedux.connect)(function (store) {
-	  return {
-	    photos: store.globalReducer.photos
-	  };
-	}), _dec(_class = function (_Component) {
-	  _inherits(PhotoPanel, _Component);
-
-	  function PhotoPanel() {
-	    _classCallCheck(this, PhotoPanel);
-
-	    return _possibleConstructorReturn(this, (PhotoPanel.__proto__ || Object.getPrototypeOf(PhotoPanel)).apply(this, arguments));
-	  }
-
-	  _createClass(PhotoPanel, [{
-	    key: 'renderPhotos',
-	    value: function renderPhotos() {
-	      if (this.props.photos.length == 0) {
-	        return;
-	      } else {
-	        var photos = this.props.photos;
-	        var photoList = photos.map(function (photo) {
-	          return _react2.default.createElement(_Photo2.default, { key: photo.src, src: photo.src, date: photo.date });
-	        });
-
-	        return _react2.default.createElement(
-	          'div',
-	          null,
-	          photoList
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'photoBox' },
-	        this.renderPhotos(),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'photo click', onClick: function onClick() {
-	              window.location.href = '/camera.html';
-	            } },
-	          _react2.default.createElement('img', { src: '/images/upload-photo.png' }),
-	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            'Upload new medical record'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return PhotoPanel;
-	}(_react.Component)) || _class);
-	;
-
-	exports.default = PhotoPanel;
-
-/***/ }),
-/* 312 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(231);
-
-	var _actions = __webpack_require__(266);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Photo = function (_Component) {
-	  _inherits(Photo, _Component);
-
-	  function Photo() {
-	    _classCallCheck(this, Photo);
-
-	    return _possibleConstructorReturn(this, (Photo.__proto__ || Object.getPrototypeOf(Photo)).apply(this, arguments));
-	  }
-
-	  _createClass(Photo, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'photo' },
-	        _react2.default.createElement('img', { src: this.props.src, onClick: function onClick() {
-	            var win = window.open(_this2.props.src, '_blank');
-	            win.focus();
-	          } }),
-	        _react2.default.createElement(
-	          'h2',
-	          { onClick: function onClick() {
-	              var win = window.open(_this2.props.src, '_blank');
-	              win.focus();
-	            } },
-	          'Uploaded ',
-	          this.props.date
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { onClick: function onClick() {
-	              _this2.props.removePhoto(_this2.props.src);
-	            } },
-	          _react2.default.createElement('i', { className: 'ion-trash-a trash-icon' })
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Photo;
-	}(_react.Component);
-
-	;
-
-	exports.default = (0, _reactRedux.connect)(null, { removePhoto: _actions.removePhoto })(Photo);
 
 /***/ })
 /******/ ]);

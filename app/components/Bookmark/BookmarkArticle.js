@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { removeBookmarkedArticle } from 'actions';
+import { removeBookmarkedArticle, toggleBookmark } from 'actions';
 
 class BookmarkArticle extends Component {
 
@@ -26,6 +26,7 @@ class BookmarkArticle extends Component {
 
 
     this.props.removeBookmarkedArticle(article);
+    this.props.toggleBookmark(this.props.title);
   }
 
 
@@ -63,4 +64,4 @@ class BookmarkArticle extends Component {
   };
 };
 
-export default connect(null, {removeBookmarkedArticle})(BookmarkArticle);
+export default connect(null, {removeBookmarkedArticle, toggleBookmark})(BookmarkArticle);

@@ -7,6 +7,7 @@ class Bookmark extends Component {
     return (
       <div className="home-page">
         <Navigation />
+        <h1>Below are your bookmarks</h1>
         <BookmarkPanel />
       </div>
     )
