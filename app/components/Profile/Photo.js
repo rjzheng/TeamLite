@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { removePhoto } from 'actions';
 
 class Photo extends Component {
   render() {
     return (
       <div className="photo">
-        <img src={this.props.src}></img>
-        <h2>Uploaded {this.props.date}</h2>
+        <img src={this.props.src} onClick={() => {
+          var win = window.open(this.props.src, '_blank');
+          win.focus();
+        }}></img>
+        <h2 onClick={() => {
+          var win = window.open(this.props.src, '_blank');
+          win.focus();
+        }}>Uploaded {this.props.date}</h2>
+        <span onClick={() => {
+          this.props.removePhoto(this.props.src);
+        }}><i className="ion-trash-a trash-icon"></i></span>
       </div>
     )
   };
 };
 
-export default Photo;
+export default connect(null, {removePhoto})(Photo);

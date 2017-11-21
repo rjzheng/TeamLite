@@ -40,19 +40,6 @@ html {
   opacity: 0.4;
 }
 
-.navigation img {
-  width: 15em;
-  height: 5em;
-  position: absolute;
-  top: 0;
-  left: 53%;
-  transform: translate(-50%, 0);
-}
-
-.menu-items {
-  padding-top: 4em;
-}
-
 .icon {
   opacity: 0.7;
 	font-size: 5em;
@@ -99,7 +86,6 @@ html {
 	border-radius: 0px 15px 15px 15px;
 	padding: 5px 20px 20px 20px;
 	margin: 20px;
-  margin-top: 6em;
   float: left;
   height: 25em;
   overflow-y: scroll;
@@ -162,8 +148,8 @@ html {
 }
 
 .profile-panel img {
-  width: 7.5em;
-  height: 7.5em;
+  width: 9em;
+  height: 9em;
   float: left;
   padding-top: 2em;
   padding-left: 5em;
@@ -171,8 +157,8 @@ html {
 
 .profile-panel div {
   float: right;
-  padding-top: 2.5em;
-  padding-right: 9em;
+  padding-top: 4em;
+  padding-right: 7em;
 }
 
 .bookmarkAdd {
@@ -212,7 +198,6 @@ html {
   width: 35em;
   transition: opacity 0.3s;
   z-index: 0px;
-  cursor: pointer;
 }
 
 .photo:hover {
@@ -233,17 +218,4 @@ html {
   font-size: 3em;
   text-align: right;
   cursor: pointer;
-}
-
-.click {
-  cursor: pointer;
-}
-
-#bookmark-inline {
-  width: 1em;
-  height: 1em;
-}
-
-#empty-message {
-  margin-top: 3em;
 }

@@ -1,14 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Photo from 'Photo';
 
+
+@connect((store) => {
+  return {
+    photos: store.globalReducer.photos
+  };
+})
+
 class PhotoPanel extends Component {
+
+  renderPhotos() {
+    if (this.props.photos.length == 0) {
+      return;
+    } else {
+      var photos = this.props.photos;
+      var photoList = photos.map((photo) => {
+        return (
+          <Photo key={photo.src} src={photo.src} date={photo.date}/>
+        )
+      });
+
+      return (
+        <div>{photoList}</div>
+
+      )
+    }
+  }
+
   render() {
     return (
       <div className="photoBox">
-        <Photo src={'/uploadedPhotos/immunization-records.jpg'} date={'07/20/2017'} />
-        <Photo src={'/uploadedPhotos/missing-medical-records.jpg'} date={'09/12/2017'} />
-        <Photo src={'/uploadedPhotos/Release-forms.jpg'} date={'11/11/2017'} />
-        <div className="photo" onClick={() => {
+        {this.renderPhotos()}
+        <div className="photo click" onClick={() => {
           window.location.href = '/camera.html';
         }}>
           <img src='/images/upload-photo.png'></img>

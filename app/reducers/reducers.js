@@ -3,7 +3,8 @@
 import {
 	ADD_BOOKMARK,
 	REMOVE_BOOKMARK,
-	TOGGLE_BOOKMARK
+	TOGGLE_BOOKMARK,
+	REMOVE_PHOTO
 } from 'actions';
 
 var article1 = {
@@ -61,17 +62,36 @@ var article7 = {
 	url: 'https://www.healthline.com/nutrition/15-ways-to-lower-blood-pressure#section1',
 	bookmarked: false
 }
+
+var upload1 = {
+	src: '/uploadedPhotos/record-1.png',
+	date: '07/20/2017'
+}
+
+var upload2 = {
+	src: '/uploadedPhotos/record-2.png',
+	date: '09/12/2017'
+}
+
+var upload3 = {
+	src: '/uploadedPhotos/record-3.png',
+	date: '11/11/2017'
+}
+
 // Initial state params
 const GLOBAL_STATE = {
 	globalVar: [],
  	bookmarkedArticles: [],
-	articles: [article1, article2, article3, article4, article5, article6, article7]
+	articles: [article1, article2, article3, article4, article5, article6, article7],
+	photos: [upload1, upload2, upload3]
 
 };
 
 export var globalReducer = (state=GLOBAL_STATE, action) => {
 	switch(action.type) {
 		case ADD_BOOKMARK: {
+
+
 			return {
 				...state,
 				bookmarkedArticles: [...state.bookmarkedArticles, action.payload]
@@ -79,11 +99,13 @@ export var globalReducer = (state=GLOBAL_STATE, action) => {
 		}
 
 		case REMOVE_BOOKMARK: {
+
 			return {
 				...state,
 				bookmarkedArticles: state.bookmarkedArticles.filter((article) =>
 					article.title != action.payload.title
-				)
+				),
+				articles: state.articles
 			}
 		}
 
@@ -94,11 +116,18 @@ export var globalReducer = (state=GLOBAL_STATE, action) => {
 				}
 			})
 
-			console.log(state.articles);
-
 			return {
 				...state,
 				articles: state.articles
+			}
+		}
+
+		case REMOVE_PHOTO: {
+			return {
+				...state,
+				photos: state.photos.filter((photo) =>
+					photo.src != action.payload
+				)
 			}
 		}
 
