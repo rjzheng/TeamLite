@@ -31,7 +31,7 @@ class Navigation extends Component {
             } else {
                 txt = "Searching for " + pResponse;
             }
-            this.context.router.push('/home');
+            this.context.router.push('/search');
           }}><i className="ion-search icon"></i></span>
           <span onClick={() => {
             window.location.href = '/camera.html';

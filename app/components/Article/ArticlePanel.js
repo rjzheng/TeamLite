@@ -16,9 +16,10 @@ class ArticlePanel extends Component {
     } else {
       var articles = this.props.articles;
       var articleList = articles.map((article) => {
-        return (
-          <Article key={article.title} thumbnail={article.thumbnail} title={article.title} description={article.description} url={article.url} bookmarked={article.bookmarked} />
-        )
+					return (
+              <Article key={article.title} thumbnail={article.thumbnail} title={article.title}
+                       description={article.description} url={article.url} bookmarked={article.bookmarked}/>
+					)
       });
 
       return (

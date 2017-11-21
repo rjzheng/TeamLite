@@ -8,6 +8,7 @@ import HomePage from 'HomePage';
 import Login from 'Login';
 import Bookmark from 'Bookmark';
 import Profile from 'Profile';
+import SearchResult from "./components/Home/SearchResult";
 
 export default (
   <Route path="/" component={App}>
@@ -15,5 +16,6 @@ export default (
 		<Route path="/home" component={HomePage} />
     <Route path="/bookmark" component={Bookmark} />
     <Route path="/profile" component={Profile} />
+		<Route path="/search" component={SearchResult} />
 	</Route>
 );
