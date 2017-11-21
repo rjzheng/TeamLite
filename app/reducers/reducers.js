@@ -83,6 +83,7 @@ const GLOBAL_STATE = {
 	globalVar: [],
  	bookmarkedArticles: [],
 	articles: [article1, article2, article3, article4, article5, article6, article7],
+	searchArticles: [article2, article6, article7],
 	photos: [upload1, upload2, upload3]
 
 };
