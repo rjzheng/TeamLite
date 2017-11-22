@@ -17,9 +17,22 @@ class Navigation extends Component {
           <span onClick={() => {
             this.context.router.push('/home');
           }}><i className="ion-ios-home icon"></i></span>
-          <span onClick={() => {
+
+          <div className="dropdown">
+            <span><i className="ion-android-person icon"></i></span>
+            <div className="dropdown-content">
+              <a onClick={() => {
+                this.context.router.push('/profile');
+              }}>Profile</a>
+              <a onClick={() => {
+                this.context.router.push('/');
+              }}>Logout</a>
+            </div>
+          </div>
+          {/* <span onClick={() => {
             this.context.router.push('/profile');
-          }}><i className="ion-android-person icon"></i></span>
+          }}><i className="ion-android-person icon"></i></span> */}
+
           <span onClick={() => {
             this.context.router.push('/bookmark');
           }}><i className="ion-android-bookmark icon"></i></span>

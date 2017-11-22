@@ -28966,11 +28966,31 @@
 	            _react2.default.createElement("i", { className: "ion-ios-home icon" })
 	          ),
 	          _react2.default.createElement(
-	            "span",
-	            { onClick: function onClick() {
-	                _this2.context.router.push('/profile');
-	              } },
-	            _react2.default.createElement("i", { className: "ion-android-person icon" })
+	            "div",
+	            { className: "dropdown" },
+	            _react2.default.createElement(
+	              "span",
+	              null,
+	              _react2.default.createElement("i", { className: "ion-android-person icon" })
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "dropdown-content" },
+	              _react2.default.createElement(
+	                "a",
+	                { onClick: function onClick() {
+	                    _this2.context.router.push('/profile');
+	                  } },
+	                "Profile"
+	              ),
+	              _react2.default.createElement(
+	                "a",
+	                { onClick: function onClick() {
+	                    _this2.context.router.push('/');
+	                  } },
+	                "Logout"
+	              )
+	            )
 	          ),
 	          _react2.default.createElement(
 	            "span",
@@ -28983,7 +29003,7 @@
 	            "span",
 	            { onClick: function onClick() {
 	                var txt;
-	                var pResponse = prompt("Search for articles:", "Healthy lifestyle");
+	                var pResponse = prompt("Search for articles:", "Blood Pressure");
 	                if (pResponse == null || pResponse == "") {
 	                  txt = "User cancelled the prompt.";
 	                } else {
@@ -31704,13 +31724,15 @@
 	              var win = window.open(_this2.props.src, '_blank');
 	              win.focus();
 	            } },
-	          'Uploaded ',
+	          'Health Evaluation: ',
 	          this.props.date
 	        ),
 	        _react2.default.createElement(
 	          'span',
 	          { onClick: function onClick() {
-	              _this2.props.removePhoto(_this2.props.src);
+	              if (confirm("Are you sure you want to delete this document?")) {
+	                _this2.props.removePhoto(_this2.props.src);
+	              } else {}
 	            } },
 	          _react2.default.createElement('i', { className: 'ion-trash-a trash-icon' })
 	        )
