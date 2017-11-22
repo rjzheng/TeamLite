@@ -25,7 +25,7 @@ class Navigation extends Component {
           }}><i className="ion-android-bookmark icon"></i></span>
           <span onClick={() => {
             var txt;
-            var pResponse = prompt("Search for articles:", "Healthy lifestyle");
+            var pResponse = prompt("Search for articles:", "Blood Pressure");
             if (pResponse == null || pResponse == "") {
                 txt = "User cancelled the prompt.";
             } else {

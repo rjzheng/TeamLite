@@ -14,7 +14,7 @@ class Photo extends Component {
         <h2 onClick={() => {
           var win = window.open(this.props.src, '_blank');
           win.focus();
-        }}>Uploaded {this.props.date}</h2>
+        }}>Health Evaluation: {this.props.date}</h2>
         <span onClick={() => {
           this.props.removePhoto(this.props.src);
         }}><i className="ion-trash-a trash-icon"></i></span>
