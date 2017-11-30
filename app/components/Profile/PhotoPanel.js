@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Photo from 'Photo';
+import ReactGA from 'react-ga';
+
 
 
 @connect((store) => {
@@ -29,12 +31,20 @@ class PhotoPanel extends Component {
     }
   }
 
+  handleClick(item) {
+        ReactGA.event({
+            category: item,
+            action: 'click',
+        });
+    }
+
   render() {
     return (
       <div className="photoBox">
         {this.renderPhotos()}
         <div className="photo click" onClick={() => {
           window.location.href = '/camera.html';
+          this.handleClick('Upload Medical Record Button');
         }}>
           <img src='/images/upload-photo.png'></img>
           <h2>Upload new medical record</h2>

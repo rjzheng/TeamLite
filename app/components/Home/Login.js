@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
+
 
 class Login extends Component {
+
+  handleClick(item) {
+        ReactGA.event({
+            category: item,
+            action: 'click',
+        });
+    }
+
   render() {
     return (
       <div className="home-page">
@@ -32,6 +42,7 @@ class Login extends Component {
             <br></br>
       			<input type="submit" value="Sign In" onClick={() => {
               this.props.router.push('/home');
+              this.handleClick('Signin Button')
             }}></input>
             <br></br>
 

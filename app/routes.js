@@ -10,6 +10,7 @@ import Bookmark from 'Bookmark';
 import Profile from 'Profile';
 import SearchResult from "./components/Home/SearchResult";
 
+
 export default (
   <Route path="/" component={App}>
 		<IndexRoute component={Login} />

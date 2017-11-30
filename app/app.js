@@ -12,6 +12,13 @@ import * as conf from 'configureStore';
 // Init custom store configuration
 var store = conf.configure();
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-110160894-1');
+
+function fireTracking() {
+    ReactGA.pageview(window.location.hash);
+}
+
 // Subscribe to state changes
 // store.subscribe(() => {
 //   console.log('Store changed', store.getState());
@@ -20,7 +27,7 @@ var store = conf.configure();
 // Render provider and routes to DOM
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />
+    <Router onUpdate={fireTracking} history={browserHistory} routes={routes} />
   </Provider>
   ,document.getElementById('app')
 );

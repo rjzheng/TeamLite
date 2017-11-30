@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from 'Navigation';
 import BookmarkPanel from 'BookmarkPanel';
+import ReactGA from 'react-ga';
+
 
 class Bookmark extends Component {
   render() {

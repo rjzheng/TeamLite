@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Article from 'Article';
+import ReactGA from 'react-ga';
+
 
 @connect((store) => {
 	return {

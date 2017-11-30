@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactGA from 'react-ga';
+
 
 import { addBookmarkedArticle, toggleBookmark, removeBookmarkedArticle } from 'actions';
 
@@ -32,6 +34,13 @@ class Article extends Component {
     this.props.toggleBookmark(this.props.title);
   }
 
+  handleClick(item) {
+        ReactGA.event({
+            category: item,
+            action: 'click',
+        });
+    }
+
 
   render() {
     return (
@@ -49,16 +58,19 @@ class Article extends Component {
               value : !this.state.value,
               imgSrc: !this.state.value ? '/images/bookmark-remove.png' : '/images/bookmark-add.png'
             });
+            this.handleClick('Add Bookmark Button');
             this.bookmarkArticle(this.props.thumbnail, this.props.title, this.props.description, this.props.url, this.state.value);
           }}></img>
 
           <h2  onClick={() => {
             var win = window.open(this.props.url, '_blank');
             win.focus();
+            this.handleClick('Article');
           }}>{this.props.title}</h2>
           <p  onClick={() => {
             var win = window.open(this.props.url, '_blank');
             win.focus();
+            this.handleClick('Article');
           }}>{this.props.description}</p>
         </div>
 
