@@ -26,8 +26,9 @@
     <script>
     function goBack() {
         tracker = ga.getAll()[0];
+        tracker.send('event', 'back from camera page', 'click');
         window.history.back();
-        tracker.send('event', 'camera', 'click');
+
     }
     </script>
 

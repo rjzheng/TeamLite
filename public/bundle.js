@@ -28987,7 +28987,7 @@
 	            'span',
 	            { onClick: function onClick() {
 	                _this2.context.router.push('/home');
-	                _this2.handleClick('Home button');
+	                _this2.handleClick('Home button - No Text');
 	              } },
 	            _react2.default.createElement('i', { className: 'ion-ios-home icon' })
 	          ),
@@ -29006,7 +29006,7 @@
 	                'a',
 	                { onClick: function onClick() {
 	                    _this2.context.router.push('/profile');
-	                    _this2.handleClick('Profile button');
+	                    _this2.handleClick('Profile button - No Text');
 	                  } },
 	                'Profile'
 	              ),
@@ -29014,7 +29014,7 @@
 	                'a',
 	                { onClick: function onClick() {
 	                    _this2.context.router.push('/');
-	                    _this2.handleClick('Logout button');
+	                    _this2.handleClick('Logout button - No Text');
 	                  } },
 	                'Logout'
 	              )
@@ -29024,7 +29024,7 @@
 	            'span',
 	            { onClick: function onClick() {
 	                _this2.context.router.push('/bookmark');
-	                _this2.handleClick('Bookmark button');
+	                _this2.handleClick('Bookmark button - No Text');
 	              } },
 	            _react2.default.createElement('i', { className: 'ion-android-bookmark icon' })
 	          ),
@@ -29039,7 +29039,7 @@
 	                  txt = "Searching for " + pResponse;
 	                }
 	                _this2.context.router.push('/search');
-	                _this2.handleClick('Search button');
+	                _this2.handleClick('Search button - No Text');
 	              } },
 	            _react2.default.createElement('i', { className: 'ion-search icon' })
 	          ),
@@ -29047,38 +29047,9 @@
 	            'span',
 	            { onClick: function onClick() {
 	                window.location.href = '/camera.html';
-	                _this2.handleClick('Camera button');
+	                _this2.handleClick('Camera button - No Text');
 	              } },
 	            _react2.default.createElement('i', { className: 'ion-camera icon' })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'navigation-text' },
-	          _react2.default.createElement(
-	            'span',
-	            { id: 'home-text' },
-	            'Home'
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { id: 'profile-text' },
-	            'Profile'
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { id: 'bookmark-text' },
-	            'Bookmarks'
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { id: 'search-text' },
-	            'Search'
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { id: 'upload-text' },
-	            'Upload'
 	          )
 	        )
 	      );

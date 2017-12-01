@@ -23,7 +23,7 @@ class Navigation extends Component {
         <div className="menu-items">
           <span onClick={() => {
             this.context.router.push('/home');
-            this.handleClick('Home button');
+            this.handleClick('Home button - No Text');
           }}><i className="ion-ios-home icon"></i></span>
 
           <div className="dropdown">
@@ -31,11 +31,11 @@ class Navigation extends Component {
             <div className="dropdown-content">
               <a onClick={() => {
                 this.context.router.push('/profile');
-                this.handleClick('Profile button');
+                this.handleClick('Profile button - No Text');
               }}>Profile</a>
               <a onClick={() => {
                 this.context.router.push('/');
-                this.handleClick('Logout button');
+                this.handleClick('Logout button - No Text');
               }}>Logout</a>
             </div>
           </div>
@@ -45,7 +45,7 @@ class Navigation extends Component {
 
           <span onClick={() => {
             this.context.router.push('/bookmark');
-            this.handleClick('Bookmark button');
+            this.handleClick('Bookmark button - No Text');
           }}><i className="ion-android-bookmark icon"></i></span>
           <span onClick={() => {
             var txt;
@@ -57,21 +57,21 @@ class Navigation extends Component {
 
             }
             this.context.router.push('/search');
-            this.handleClick('Search button');
+            this.handleClick('Search button - No Text');
           }}><i className="ion-search icon"></i></span>
           <span onClick={() => {
             window.location.href = '/camera.html';
-            this.handleClick('Camera button');
+            this.handleClick('Camera button - No Text');
           }}><i className="ion-camera icon"></i></span>
         </div>
 
-        <div className="navigation-text">
+        {/* <div className="navigation-text">
           <span id="home-text">Home</span>
           <span id="profile-text">Profile</span>
           <span id="bookmark-text">Bookmarks</span>
           <span id="search-text">Search</span>
           <span id="upload-text">Upload</span>
-        </div>
+        </div> */}
 
       </div>
     )
